@@ -1,0 +1,64 @@
+/* -------------------------------------------------------  */
+/* -------------------------------------------------------  */
+/* ----------------- GLOBAL VARIABLES --------------------- */
+/* -------------------------------------------------------  */
+/* -------------------------------------------------------  */
+
+:root {
+    /*============================*/
+    /*========== colors ==========*/
+    /*============================*/
+
+    /* basics ****************/
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray: #9d9d9d;
+
+    /* blue *****************/
+    --primary-blue: #8DC7C7;
+    --secondary-blue: #C3E4E4;
+    --background-blue: #F3FDFD;
+
+    /* green ****************/
+    --primary-green: #7AB67D;
+    --secondary-green: #C2EBC4;
+    --background-green: #F3FFF4;
+
+    --primary-yellow: #FAFF00;
+
+
+
+    /*============================*/
+    /*======== font-sizes ========*/
+    /*============================*/
+
+    --home--titles-main: clamp(38px, 12vw, 100px);
+    --home--titles-secondary: clamp(42px, 8vw, 80px);
+
+    --font-size-3xl: clamp(32px, 10vw, 64px);
+    --font-size-xxl: clamp(30px, 6vw, 48px);
+    --font-size-xl: clamp(20px, 4vw, 32px);
+    --font-size-l: clamp(18px, 4vw, 28px);
+    --font-size-m: clamp(16px, 2vw, 24px);
+    --font-size-s: clamp(14px, 1.8vw, 18px);
+    --font-size-xs: clamp(12px, 2vw, 14px);
+
+
+
+    /*============================*/
+    /*========== sizing ==========*/
+    /*============================*/
+
+    --xl-sizing: 64px;
+    --l-sizing: 52px;
+    --m-sizing: 48px;
+    --s-sizing: 32px;
+    --xs-sizing: 16px;
+    --xxs-sizing: 8px;
+
+    /*============================*/
+    /*======== transitions =======*/
+    /*============================*/
+
+    /* empty for the moment */
+}

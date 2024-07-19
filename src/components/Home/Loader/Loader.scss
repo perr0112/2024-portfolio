@@ -1,0 +1,69 @@
+.loader {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5dvh;
+    z-index: 999999;
+}
+
+.identity {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.linemask:first-child p {
+    font-size: clamp(24px, 4vw, 36px);
+}
+
+.linemask:last-child p {
+    font-size: clamp(18px, 2vw, 28px);
+}
+
+.preview-works {
+    width: 50%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    padding: 2rem;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cover img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    scale: 1.25;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.img-1 {
+    z-index: 0;
+}
+
+.img-2 {
+    z-index: 1;
+}
+
+.img-3 {
+    z-index: 2;
+}

@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.home-container {
+
+    .container__title {
+
+        h1 {
+            font-size: var(--font-size-3xl);
+        }
+    }
+
+    .container__infos {
+
+    }
+}
