@@ -49,7 +49,7 @@ body.transitioning .header .line {
     left: 0;
     width: 100vw;
     height: 100dvh;
-    transform: translateY(100dvh);
+    transform: translateY(100dvh);  
     background-color: black;
   
     display: flex;
@@ -61,5 +61,40 @@ body.transitioning .header .line {
         font-size: clamp(32px, 7vw, 84px);
         color: white;
         transform: translateY(100%);
+    }
+}
+
+.cursor {
+    position: fixed;
+    background-color: red;
+    z-index: 9999999;
+    mix-blend-mode: difference;
+    user-select: none;
+    pointer-events: none;
+
+    .cursor-icon {
+        position: absolute;
+        width: 7.5px;
+        aspect-ratio: 1;
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .cursor-text {
+        position: absolute;
+        color: white;
+        // top: -33%;
+        // left: 100%;
+        top: 0;
+        left: 0;
+        transform: translate(50%, -25%);
+        pointer-events: none;
+        // background-color: red;
+        overflow: hidden;
+
+        p {
+            position: relative;
+            transform: translateY(100%);
+        }
     }
 }

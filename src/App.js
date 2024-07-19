@@ -1,26 +1,30 @@
 import './styles/App.scss'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import gsap from 'gsap';
 
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
+import Cursor from './components/Cursor/Cursor';
 
 function App() {
   const location = useLocation();
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  
+  useEffect(() => {
+    if (document.body.classList.contains('transitioning')) {
+      setIsTransitioning(true);
+    } else {
+      setIsTransitioning(false);
+    }
+  }, [location.pathname]);
 
   return (
     <>
-      <div className="cursor">
-        <div className="cursor-icon"></div>
-        <div className="cursor-text"></div>
-      </div>
-      <div className="transition">
+      <Cursor isTransitioning={isTransitioning} />
+      <div className="transition" data-text-cursor="loading">
         <div className="linemask">
           <div className="title-transition"></div>
         </div>

@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { useCallback, useEffect } from 'react';
 import { transition } from '../../utils/transition';
+import LinkTransition from '../Transition/LinkTransition';
 
 const links = [
     { to: '/about', text: 'About' },
@@ -12,16 +13,8 @@ const links = [
 const Header = ({
     mainColor,
 }) => {
-    const navigate = useNavigate();
+
     const { pathname } = useLocation();
-
-    useEffect(() => {
-        console.log(pathname)
-    }, [pathname])
-
-    const handleTransition = useCallback((href, title) => {
-        transition(href, 'is-transitioning', navigate, title);
-    }, []);
 
     return (
         <header>
@@ -46,12 +39,13 @@ const Header = ({
                     {links.map((link, index) => {
                         return (
                             <li key={index}>
-                                <Link
+                                {/* <Link
                                     onClick={() => handleTransition(link.to, link.text)}
                                     data-active={pathname === link.to}
                                 >
                                     {link.text}
-                                </Link>
+                                </Link> */}
+                                <LinkTransition href={link.to} title={link.text} />
                             </li>
                         )
                     })}

@@ -3,13 +3,14 @@ import './Home.scss';
 
 import Loader from "./Loader/Loader";
 import { transition } from '../../utils/transition';
+import { useEffect } from 'react';
 
 const Home = () => {
     const navigate = useNavigate();
 
-    const handleTransition = () => {
-        transition('/about', 'is-transitioning', navigate, 'About');
-    };
+    useEffect(() => {
+        console.log('re-render');
+    }, []);
 
     return (
         <>

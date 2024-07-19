@@ -44,7 +44,9 @@ export function transition(
 
     tl.to(transition, {
         y: '-100dvh',
-        onComplete: () => body.classList.remove('transitioning')
+        onComplete: () => {
+            body.classList.remove('transitioning');
+        }
     }, '-=1')
 
     tl.set(transition, {

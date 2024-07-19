@@ -10,7 +10,7 @@ const About = () => {
     };
 
     return (
-        <div>
+        <div data-text-cursor="About">
             <button onClick={handleTransition}>
                 link
             </button>

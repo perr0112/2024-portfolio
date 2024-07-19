@@ -12,12 +12,16 @@ const Loader = () => {
 
     const { pathname } = useLocation();
 
-    useEffect(() => {console.log('loc', pathname)})
-
     useEffect(() => {
         if (pathname !== '/') { return; }
         const durationDefault = 1.2
-        const tl = gsap.timeline()
+        const tl = gsap.timeline(
+            {
+                defaults: {
+                    // overwrite: true
+                }
+            }
+        );
 
         tl.to('.identity-container .linemask p', {
             transform: 'translateY(0%)',
@@ -51,7 +55,7 @@ const Loader = () => {
             display: 'none'
         }, '>')
 
-        tl.set('.home', {
+        tl.set('.home-container', {
             display: 'block'
         }, '<')
 
