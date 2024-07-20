@@ -83,6 +83,7 @@ const Cursor = ({ isTransitioning }) => {
         leaveTimeline.current = gsap.timeline({
             defaults: {
                 duration: 0.7,
+                // duration: 0.3,
                 ease: "Expo.easeInOut"
             }
         });
@@ -97,6 +98,7 @@ const Cursor = ({ isTransitioning }) => {
             gsap.to('.cursor-text p', {
                 transform: 'translateY(0%)',
                 duration: 0.7,
+                // duration: 0.3,
                 ease: "Expo.easeInOut"
             });
         } else {
@@ -128,7 +130,7 @@ const Cursor = ({ isTransitioning }) => {
             <div className="cursor-icon"></div>
             <div className="cursor-text">
                 <p>{cursorText}</p>
-                {/* <p>Previous portfolio</p> */}
+                {/* <p>Portlkdfjglkdfjg dfklj gldkf jgflk jg</p> */}
             </div>
         </div>
     );

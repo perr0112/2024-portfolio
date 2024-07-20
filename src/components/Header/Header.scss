@@ -47,6 +47,7 @@ nav.header {
     height: 15vh;
     opacity: 0;
     width: 50vw;
+    z-index: 10;
     // min-width: calc(100vw - 250px);
     // background-color: red;
     mix-blend-mode: difference;

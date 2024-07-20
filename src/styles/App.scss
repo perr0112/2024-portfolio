@@ -87,11 +87,12 @@ p.basic-size {
 .linemask {
     position: relative;
     overflow: hidden;
+    
+    p {
+        transform: translateY(100%);
+    }
 }
 
-.linemask p {
-    transform: translateY(100%);
-}
 
 .transition {
     position: fixed;
@@ -117,11 +118,15 @@ p.basic-size {
 
 .cursor {
     position: fixed;
-    background-color: red;
+    // background-color: red;
     z-index: 9999999;
     mix-blend-mode: difference;
     user-select: none;
     pointer-events: none;
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
 
     .cursor-icon {
         position: absolute;
@@ -132,24 +137,30 @@ p.basic-size {
     }
 
     .cursor-text {
-        position: absolute;
+        position: relative;
         color: white;
-        top: 0;
-        left: 0;
+        width: 350px;
+        height: 15px;
+        // top: 0;
+        // left: 0;
         // top: 50%;
         // left: 25px;
-        transform: translate(50%, -25%);
+        // transform: translate(50%, -25%);
         pointer-events: none;
         // background-color: red;
         overflow: hidden;
 
         p {
-            // width: 150px;
-            // background-color: red;
-            color: var(--gray);
+            position: absolute;
+            width: max-content;
+            color: var(--white);
             font-size: var(--font-size-xs);
-            position: relative;
+            top: -2.5px;
+            // top: -5px;
+            // top: 0;
+            left: 15px;
             transform: translateY(100%);
+            // transform: translateY(0%) !important;
         }
     }
 }

@@ -19,11 +19,11 @@
     text-align: center;
 }
 
-.linemask:first-child p {
+.identity .linemask:first-child p {
     font-size: clamp(24px, 4vw, 36px);
 }
 
-.linemask:last-child p {
+.identity .linemask:last-child p {
     font-size: clamp(18px, 2vw, 28px);
 }
 

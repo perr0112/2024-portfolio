@@ -1,5 +1,12 @@
 import ListProjects from './List/ListProjects';
+import Linemask from '../Linemask';
+
 import './Projects.scss';
+
+const phrases = [
+    "Discover this selection of work, i have done in my spare time, as a freelancer or during my studies.",
+    "This list may not be up to date, but i will do my best not to forget any <i>(beautiful)</i> projects."
+];
 
 const Projects = () => {
 
@@ -11,10 +18,7 @@ const Projects = () => {
                     Projects
                 </h1>
                 <div className="paragraphs">
-                    <p className="basic-size">
-                        Discover this selection of work i have done in my spare time, as a freelancer or during my studies.
-                    </p>
-                    <p className="basic-size">This list may not be up to date, but i will do my best not to forget any <i>(beautiful)</i> projects.</p>
+                    <Linemask className="basic-size" phrases={phrases} />
                 </div>
             </div>
 

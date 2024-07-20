@@ -1,5 +1,6 @@
 .projects-content {
     margin-top: var(--l-sizing);
+    margin-bottom: 1rem;
 
     .filters {
         // background-color: red;
@@ -26,22 +27,70 @@
                 user-select: none;
 
                 &[data-active="true"] {
-                    background-color: var(--black);
+                    background-color: var(--primary-green);
+                    border: 1px solid var(--primary-green);
+                    // background-color: var(--black);
                     color: var(--white);
                 }
-            }
-        }
 
-        .display-type {
+                &:hover[data-active="false"] {
+                    background-color: var(--secondary-green);
+                }
+            }
         }
 
     }
 
     .list-projects {
+        position: relative;
+        // width: calc(100vw - 2rem);
+        width: 100vw;
         margin-top: var(--l-sizing);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--s-sizing);
 
         .project-item {
+            position: relative;
             cursor: pointer;
+            width: calc(100% - 2rem);
+            height: 250px;
+            border-radius: 10px;
+            // border: 1px solid var(--black);
+            overflow: hidden;
+
+            @media screen and (min-width: 1000px) {
+                // width: calc(100% / 3);
+                width: calc(100% / 3 - 2rem)
+            }
+
+            img {
+                position: relative;
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                scale: 1.1;
+                object-fit: cover;
+            }
+
+            .item__tags {
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+                display: flex;
+                flex-direction: row;
+                gap: .5rem;
+
+                .item__tags-tag {
+                    background-color: var(--white);
+                    border: 1px solid var(--black);
+                    border-radius: 10px;
+                    padding-inline: min(1vw, 20px);
+                    padding-block: min(1.5vw, 10px);
+                    font-size: var(--font-size-xs);    
+                }
+            }
         }
     }
 }

@@ -5,9 +5,12 @@ import { useEffect, useState } from 'react';
 import ProjectItem from './Item/ProjectItem';
 import { projects, TAGS } from '../../../data/projects';
 
+const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
+
 const ListProjects = () => {
 
     const [selectedTags, setSelectedTags] = useState([]);
+    const [sortedProjectsTags, setSortedProjectsTags] = useState(sortedProjects);
 
     const handleTagClick = (tagName) => {
         setSelectedTags((prevSelectedTags) => {
@@ -37,13 +40,10 @@ const ListProjects = () => {
                         />
                     )}
                 </div>
-
-                <div className="display-type">
-                </div>
             </div>
 
             <div className="list-projects">
-                {projects.map((data, index) =>
+                {sortedProjectsTags.map((data, index) =>
                     <ProjectItem key={index} data={data} />
                 )}
             </div>
