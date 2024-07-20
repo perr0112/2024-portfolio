@@ -96,8 +96,20 @@ nav.header {
             }
 
             a[data-active="true"] {
+                position: relative;
                 pointer-events: none;
                 color: var(--gray);
+
+                &::before {
+                    content: '';
+                    width: 7.5px;
+                    position: absolute;
+                    top: 25%;
+                    left: -35%;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background-color: var(--white);
+                }
             }
         }
     }

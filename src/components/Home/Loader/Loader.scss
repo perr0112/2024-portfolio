@@ -1,5 +1,7 @@
 .loader {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100dvh;
     display: flex;
@@ -8,6 +10,7 @@
     align-items: center;
     gap: 5dvh;
     z-index: 999999;
+    background-color: white;
 }
 
 .identity {

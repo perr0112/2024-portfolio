@@ -17,7 +17,15 @@ body {
     background-color: var(--white);
 }
 
-body .main-content.body-content[data-home="true"] {
+// body .main-content.body-content[data-home="true"] {
+//     padding-top: 150px;
+//     width: 100vw;
+//     min-height: 100vh;
+//     // min-height: calc(100dvh - 150px);
+// }
+
+body .main-content.body-content {
+    // background-color: red;
     padding-top: 150px;
     width: 100vw;
     min-height: 100vh;

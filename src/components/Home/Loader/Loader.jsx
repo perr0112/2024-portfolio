@@ -14,14 +14,12 @@ const Loader = () => {
 
     useEffect(() => {
         if (pathname !== '/') { return; }
-        const durationDefault = 1.2
-        const tl = gsap.timeline(
-            {
-                defaults: {
-                    // overwrite: true
-                }
-            }
-        );
+        const durationDefault = 1.2;
+        const tl = gsap.timeline();
+
+        tl.set('nav.header', {
+            pointerEvents: 'none'
+        })
 
         tl.to('.identity-container .linemask p', {
             transform: 'translateY(0%)',
@@ -91,6 +89,10 @@ const Loader = () => {
             opacity: 1,
             ease: 'Expo.easeInOut',
         }, '>')
+
+        tl.set('nav.header', {
+            pointerEvents: 'auto'
+        })
         // }, `-=${durationDefault - (0.5 + 0.15)}`)
     });
 

@@ -16,7 +16,6 @@ export function transition(
         }
     })
 
-    console.log('transition', href, bodyClass)
     const body = document.body
     const transition = body.querySelector('.transition')
 

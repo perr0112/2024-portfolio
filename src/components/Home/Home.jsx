@@ -1,16 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 
 import Loader from "./Loader/Loader";
-import { transition } from '../../utils/transition';
-import { useEffect } from 'react';
 
 const Home = () => {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        console.log('re-render');
-    }, []);
 
     return (
         <>
