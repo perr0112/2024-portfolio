@@ -1,0 +1,17 @@
+.projects-container {
+    
+    .container__top {
+
+        h1 {
+            color: var(--primary-green);
+        }
+
+        .paragraphs {
+            margin-top: var(--s-sizing);
+
+            display: flex;
+            flex-direction: column;
+            gap: var(--xxs-sizing);
+        }
+    }
+}

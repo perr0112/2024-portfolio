@@ -128,6 +128,7 @@ const Cursor = ({ isTransitioning }) => {
             <div className="cursor-icon"></div>
             <div className="cursor-text">
                 <p>{cursorText}</p>
+                {/* <p>Previous portfolio</p> */}
             </div>
         </div>
     );

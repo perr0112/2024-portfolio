@@ -1,0 +1,47 @@
+.projects-content {
+    margin-top: var(--l-sizing);
+
+    .filters {
+        // background-color: red;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .tags-avalaible {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--xs-sizing);
+
+            .tag {
+                background-color: var(--white);
+                border: 1px solid var(--black);
+                // border-radius: 9999px;
+                border-radius: 10px;
+                padding-inline: min(2vw, 40px);
+                padding-block: min(2.5vw, 20px);
+                font-size: var(--font-size-s);
+                cursor: pointer;
+                user-select: none;
+
+                &[data-active="true"] {
+                    background-color: var(--black);
+                    color: var(--white);
+                }
+            }
+        }
+
+        .display-type {
+        }
+
+    }
+
+    .list-projects {
+        margin-top: var(--l-sizing);
+
+        .project-item {
+            cursor: pointer;
+        }
+    }
+}

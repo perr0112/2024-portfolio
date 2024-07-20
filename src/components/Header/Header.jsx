@@ -39,12 +39,6 @@ const Header = ({
                     {links.map((link, index) => {
                         return (
                             <li key={index}>
-                                {/* <Link
-                                    onClick={() => handleTransition(link.to, link.text)}
-                                    data-active={pathname === link.to}
-                                >
-                                    {link.text}
-                                </Link> */}
                                 <LinkTransition href={link.to} title={link.text} />
                             </li>
                         )

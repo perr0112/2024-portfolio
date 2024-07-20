@@ -17,7 +17,6 @@ const LinkTransition = ({ href, title }) => {
         <Link
             onClick={() => handleTransition(href, title)}
             data-active={pathname === href}
-            data-text-cursor={href === '/about' ? 'about' : 'link'}
         >
             {title}
         </Link>
