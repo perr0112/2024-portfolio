@@ -20,17 +20,17 @@ const NextProject = ({
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: nextProject.current,
-                    // start: "-25px top",
+                    start: "top top",
                     end: "bottom bottom",
                     scrub: true,
                     // markers: true,
-                    onComplete: () => {
-                        console.log('completed');
+                    // onComplete: () => {
+                        // console.log('completed');
                         // if (nextProject.current.getBoundingClientRect().bottom <= window.innerHeight) {
                         //     console.log('ended');
                         //     projectView(nextProject.current, `/project/${next.id}`, navigate, true);
                         // }
-                    }
+                    // }
                 }
             });
 
@@ -44,13 +44,13 @@ const NextProject = ({
 
             tl.fromTo('img.next-project', {
                 scale: 0.5,
-                filter: 'blur(5px)'
+                // filter: 'blur(5px)'
             }, {
                 scale: 1,
-                filter: 'blur(0px)',
-                onComplete: () => {
-                    console.log('completed');
-                }
+                // filter: 'blur(0px)',
+                // onComplete: () => {
+                //     console.log('completed');
+                // }
             }, '<')
         }
     }, [current, next, navigate]);

@@ -7,7 +7,6 @@ import NextProject from './NextProject/NextProject';
 import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
 
 import { getCurrentProject, getNextProject } from "../../../utils/projects";
-import { projects } from '../../../data/projects';
 
 const phrases = [
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
@@ -78,8 +77,6 @@ const ProjectView = () => {
                         />
                     )}
                 </div>
-
-                {currentProject.images}
 
             </div>
 

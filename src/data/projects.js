@@ -4,14 +4,16 @@ const projects = [
         name: "Stream'It",
         date: 2021,
         banner: "stream_it",
-        tags: ["UI, UX", "Design"]
+        tags: ["UI, UX", "Design"],
+        images: 1
     },
     {
         id: 2,
         name: "Flexin",
         date: 2023,
         banner: "flexin",
-        tags: ["Development", "UI, UX", "Design"]
+        tags: ["Development", "UI, UX", "Design"],
+        images: 3,
     },
     // {
     //     id: 2,
@@ -25,7 +27,8 @@ const projects = [
         name: "Maxime's portfolio",
         date: 2024,
         banner: "bymax_portfolio",
-        tags: ["Development", "UI, UX", "Design"]
+        tags: ["Development", "UI, UX", "Design"],
+        images: 4
     },
     {
         id: 4,
