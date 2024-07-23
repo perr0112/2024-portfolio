@@ -81,8 +81,6 @@ const ProjectView = () => {
 
                 {currentProject.images}
 
-                <p>TODO::: next project on scroll</p>
-
             </div>
 
             <NextProject
