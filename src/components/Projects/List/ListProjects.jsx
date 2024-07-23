@@ -23,6 +23,17 @@ const ListProjects = () => {
     };
 
     useEffect(() => {
+        if (selectedTags.length === 0) {
+            setSortedProjectsTags(sortedProjects);
+        } else {
+            const filtered = sortedProjects.filter(project =>
+                selectedTags.every(tag => project.tags.includes(tag))
+            );
+            setSortedProjectsTags(filtered);
+        }
+    }, [selectedTags]);
+
+    useEffect(() => {
         console.log(selectedTags);
     }, [selectedTags])
 
