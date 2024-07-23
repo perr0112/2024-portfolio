@@ -12,8 +12,8 @@ a.btn {
     &.primary {
         background-color: var(--black);
         width: 100%;
-        padding-inline: min(calc(10px + 3vw), 40px);
-        padding-block: min(calc(10px + 2vw), 15px);
+        padding-inline: min(calc(10px + 3vw), 30px);
+        padding-block: min(calc(10px + 2vw), 10px);
         color: white;
         font-size: var(--font-size-s);
     }

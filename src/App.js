@@ -31,7 +31,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(location.pathname);
     switch (location.pathname) {
       case '/':
       case '/contact':
@@ -46,8 +45,6 @@ function App() {
       default:
         setTheme('basic');
     }
-
-    console.log(theme);
   }, [location.pathname]);
 
   return (

@@ -5,7 +5,7 @@ const ProjectItem = ({ data }) => {
     const navigate = useNavigate();
 
     const handleProjectView = (e) => {
-        projectView(e, `/project/${data.id + 1}`, navigate);
+        projectView(e, `/project/${data.id}`, navigate, false);
     };
 
     return (

@@ -7,6 +7,7 @@ export function projectView(
     event,
     href = '/',
     navigate,
+    fromProject,
 ) {
 
     const tl = gsap.timeline({
@@ -16,7 +17,7 @@ export function projectView(
         }
     })
 
-    const currentProject = event.target.offsetParent;
+    const currentProject = fromProject ? event : event.target.offsetParent;
     const imgCurrentProject = currentProject.querySelector('img');
     const imgRect = imgCurrentProject.getBoundingClientRect();
 
@@ -67,7 +68,6 @@ export function projectView(
         ease: 'Expo.easeInOut',
         onComplete: () => {
             window.scrollTo({ top: 0 });
-            console.log('ended');
             navigate(href);
         }
     }, '+=0.05');

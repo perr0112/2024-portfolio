@@ -2,8 +2,12 @@ import './ProjectView.scss';
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCurrentProject } from "../../../utils/projects";
+
+import NextProject from './NextProject/NextProject';
 import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
+
+import { getCurrentProject, getNextProject } from "../../../utils/projects";
+import { projects } from '../../../data/projects';
 
 const phrases = [
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
@@ -15,13 +19,15 @@ const ProjectView = () => {
     const params = useParams();
 
     const [currentProject, setCurrentProject] = useState({});
+    const [nextProject, setNextProject] = useState({});
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        console.log(params);
         const project = getCurrentProject(params.id);
         setCurrentProject(project);
         setTags(project.tags);
+        const nextProject = getNextProject(project.id);
+        setNextProject(nextProject);
     }, [params]);
 
     return (
@@ -78,6 +84,11 @@ const ProjectView = () => {
                 <p>TODO::: next project on scroll</p>
 
             </div>
+
+            <NextProject
+                current={currentProject}
+                next={nextProject}
+            />
         </>
     )
 };
