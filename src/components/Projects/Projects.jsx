@@ -13,7 +13,7 @@ const Projects = () => {
     return (
         <div className="projects-container">
 
-            <div className="container__top">
+            <div className="container__top" data-target="false">
                 <h1 className="title_page">
                     Projects
                 </h1>

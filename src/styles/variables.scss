@@ -43,8 +43,6 @@
     --font-size-s: clamp(14px, 1.8vw, 18px);
     --font-size-xs: clamp(12px, 2vw, 14px);
 
-
-
     /*============================*/
     /*========== sizing ==========*/
     /*============================*/
@@ -60,5 +58,9 @@
     /*======== transitions =======*/
     /*============================*/
 
-    /* empty for the moment */
+    --basic-duration: .7s;
+
+    --transition-cubic: var(--basic-duration) cubic-bezier(.5, 0, 0, 1);
+    --transition-cubic-hover: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+    --transition-cubic-ending-slow: cubic-bezier(0.075, 0.22, 0.165, 1);
 }

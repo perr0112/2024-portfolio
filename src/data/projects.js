@@ -36,6 +36,13 @@ const projects = [
     },
     {
         id: 4,
+        name: "Qualitum",
+        date: 2024,
+        banner: "qualitum",
+        tags: ["Development", "UI, UX", "Design"]
+    },
+    {
+        id: 5,
         name: "FreshZea",
         date: 2024,
         banner: "freshzea",

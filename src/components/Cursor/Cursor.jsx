@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-
 import lerp from "../../utils/basics";
 
-const Cursor = ({ isTransitioning }) => {
+const Cursor = () => {
     const circle = useRef(null);
     const [cursorText, setCursorText] = useState('');
     const enterTimeline = useRef(null);
@@ -53,7 +52,7 @@ const Cursor = ({ isTransitioning }) => {
     }, []);
 
     const updateCursorText = useCallback((e) => {
-        const text = e.target.getAttribute('data-text-cursor') || '';
+        const text = e.target.getAttribute('data-text-cursor');
         setCursorText(text);
 
         if (enterTimeline.current) {
@@ -83,7 +82,6 @@ const Cursor = ({ isTransitioning }) => {
         leaveTimeline.current = gsap.timeline({
             defaults: {
                 duration: 0.7,
-                // duration: 0.3,
                 ease: "Expo.easeInOut"
             }
         });
@@ -93,30 +91,34 @@ const Cursor = ({ isTransitioning }) => {
     }, []);
 
     useEffect(() => {
-        if (isTransitioning) {
-            setCursorText("loading");
-            gsap.to('.cursor-text p', {
-                transform: 'translateY(0%)',
-                duration: 0.7,
-                // duration: 0.3,
-                ease: "Expo.easeInOut"
+        const addEventListeners = () => {
+            const allDataCursorText = document.querySelectorAll('[data-text-cursor]');
+            allDataCursorText.forEach(cursorText => {
+                cursorText.addEventListener('mouseenter', updateCursorText);
+                cursorText.addEventListener('mouseover', updateCursorText);
+                cursorText.addEventListener('mouseleave', removeCursorText);
             });
-        } else {
-            setCursorText("");
-            removeCursorText();
-        }
-    }, [isTransitioning, removeCursorText]);
+        };
 
-    useEffect(() => {
-        const allDataCursorText = document.querySelectorAll('[data-text-cursor]');
+        addEventListeners();
 
-        allDataCursorText.forEach(cursorText => {
-            cursorText.addEventListener('mouseenter', updateCursorText);
-            cursorText.addEventListener('mouseover', updateCursorText);
-            cursorText.addEventListener('mouseleave', removeCursorText);
+        const observer = new MutationObserver((mutationsList) => {
+            for (let mutation of mutationsList) {
+                if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                    addEventListeners();
+                }
+            }
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            childList: true,
+            subtree: true
         });
 
         return () => {
+            observer.disconnect();
+            const allDataCursorText = document.querySelectorAll('[data-text-cursor]');
             allDataCursorText.forEach(cursorText => {
                 cursorText.removeEventListener('mouseenter', updateCursorText);
                 cursorText.removeEventListener('mouseover', updateCursorText);
@@ -130,7 +132,6 @@ const Cursor = ({ isTransitioning }) => {
             <div className="cursor-icon"></div>
             <div className="cursor-text">
                 <p>{cursorText}</p>
-                {/* <p>Portlkdfjglkdfjg dfklj gldkf jgflk jg</p> */}
             </div>
         </div>
     );

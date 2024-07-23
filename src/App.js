@@ -9,19 +9,11 @@ import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Cursor from './components/Cursor/Cursor';
 import Lenis from 'lenis';
+import ProjectView from './components/Projects/ProjectView/ProjectView';
 
 function App() {
   const location = useLocation();
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [theme, setTheme] = useState('basic');
-
-  useEffect(() => {
-    if (document.body.classList.contains('transitioning')) {
-      setIsTransitioning(true);
-    } else {
-      setIsTransitioning(false);
-    }
-  }, [location.pathname]);
 
   useEffect(() => {
     const lenis = new Lenis()
@@ -60,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Cursor isTransitioning={isTransitioning} />
+      <Cursor />
       <div className="transition" data-text-cursor="loading">
         <div className="linemask">
           <div className="title-transition"></div>
@@ -76,6 +68,7 @@ function App() {
           <Route index path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:id" element={<ProjectView />} />
         </Routes>
       </div>
     </>

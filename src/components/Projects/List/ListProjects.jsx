@@ -29,7 +29,7 @@ const ListProjects = () => {
     return (
         <div className="projects-content">
 
-            <div className="filters">
+            <div className="filters" data-target="false">
                 <div className="tags-avalaible">
                     {TAGS.map((tag, index) =>
                         <Tag

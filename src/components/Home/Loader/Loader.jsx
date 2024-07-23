@@ -17,9 +17,11 @@ const Loader = () => {
         const durationDefault = 1.2;
         const tl = gsap.timeline();
 
-        tl.set('nav.header', {
-            pointerEvents: 'none'
-        })
+        if (pathname === '/') {
+            tl.set('nav.header', {
+                pointerEvents: 'none'
+            })
+        }
 
         tl.to('.identity-container .linemask p', {
             transform: 'translateY(0%)',

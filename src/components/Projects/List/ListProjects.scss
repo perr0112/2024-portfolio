@@ -1,6 +1,6 @@
 .projects-content {
     margin-top: var(--l-sizing);
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 
     .filters {
         // background-color: red;
@@ -27,9 +27,9 @@
                 user-select: none;
 
                 &[data-active="true"] {
-                    background-color: var(--primary-green);
-                    border: 1px solid var(--primary-green);
-                    // background-color: var(--black);
+                    // background-color: var(--primary-green);
+                    // border: 1px solid var(--primary-green);
+                    background-color: var(--black);
                     color: var(--white);
                 }
 
@@ -72,6 +72,7 @@
                 height: 100%;
                 scale: 1.1;
                 object-fit: cover;
+                transition: scale var(--transition-cubic);
             }
 
             .item__tags {
@@ -83,12 +84,21 @@
                 gap: .5rem;
 
                 .item__tags-tag {
-                    background-color: var(--white);
-                    border: 1px solid var(--black);
+                    pointer-events: none;
+                    background-color: var(--black);
+                    color: white;
+                    // background-color: var(--white);
+                    // border: 1px solid var(--black);
                     border-radius: 10px;
                     padding-inline: min(1vw, 20px);
                     padding-block: min(1.5vw, 10px);
-                    font-size: var(--font-size-xs);    
+                    font-size: var(--font-size-xs);
+                }
+            }
+
+            @media screen and (min-width: 1000px) {
+                &:hover img {
+                    scale: 1.2;
                 }
             }
         }
