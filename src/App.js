@@ -53,7 +53,7 @@ function App() {
   return (
     <>
       <Cursor />
-      <div className="transition" data-text-cursor="loading">
+      <div className="transition" data-text-cursor="Loading">
         <div className="linemask">
           <div className="title-transition"></div>
         </div>

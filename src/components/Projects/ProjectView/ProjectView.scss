@@ -10,7 +10,7 @@
         object-fit: cover;
         scale: 1;
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         top: 0;
         left: 0;
         right: 0;
@@ -21,19 +21,60 @@
 .project-content {
     // padding-top: 20px;
     position: relative;
+    // width: calc(100vw - 2rem);
     width: calc(100vw - 2rem);
+    margin-inline: auto;
     height: max-content;
     margin-top: calc(100vh - min(calc(100px + 10vw), 200px));
     padding-block: 3rem;
+    // word-break: break-all;
+
+    @media screen and (min-width: 1000px) {
+        width: calc(100vw - 8rem);
+    }
+
+    .title {
+        position: relative;
+        // margin-bottom: var(--s-sizing);
+        margin-block: var(--xl-sizing);
+        font-size: var(--font-size-m);
+        margin-left: min(30%, 40px);
+        color: var(--light-gray);
+        // background-color: red;
+        // width: max-content;
+
+        &::after {
+            content: '';
+            position: absolute;
+            // width: calc(100% - (var(--xl-sizing) + (min(30%, 40px))));
+            // width: calc(100% - min(30%, 40px));
+            width: 100%;
+            height: 1px;
+            background-color: var(--light-gray);
+            left: 0;
+            right: 0;
+            bottom: -10px;
+        }
+    }
 
     .content__description {
         display: flex;
         flex-direction: column;
         gap: var(--s-sizing);
 
+        .project__desc {
+            .linemask:first-child {
+                text-indent: min(30%, 40px);
+            }
+        }
+
         .project-font {
             font-size: var(--font-size-xl);
             width: 60%;
+
+            @media screen and (max-width: 1000px) {
+                width: 100%;
+            }
         }
 
         .project__tags {
@@ -47,7 +88,7 @@
                     font-size: var(--font-size-s);
                     align-self: flex-end;
                     margin-bottom: var(--xs-sizing);
-                    color: var(--gray);
+                    color: var(--light-gray);
                 }
 
                 .project-font-tags {
@@ -60,6 +101,21 @@
                     }
                 }
             }
+        }
+
+    }
+
+    .content__images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--l-sizing);
+
+        img {
+            width: 75vw;
+            max-width: 850px;
+            aspect-ratio: 1620 / 1080;
         }
     }
 }

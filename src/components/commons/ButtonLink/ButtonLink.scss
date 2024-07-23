@@ -1,0 +1,85 @@
+a.btn {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    gap: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+
+    &.primary {
+        background-color: var(--black);
+        width: 100%;
+        padding-inline: min(calc(10px + 3vw), 40px);
+        padding-block: min(calc(10px + 2vw), 15px);
+        color: white;
+        font-size: var(--font-size-s);
+    }
+
+    .link-animated {
+        position: relative;
+        overflow: hidden;
+        
+        span {
+            display: inline-block;
+            position: relative;
+            color: white;
+            // transition: var(--transition-cubic);
+            transition: all .3s cubic-bezier(.215,.61,.355,1);
+
+            &::after {
+                content: attr(data-text);
+                position: absolute;
+                left: 0;
+                transform: translateY(100%);
+                color: white;
+            }
+        }
+    }
+
+    .svgs {
+        position: relative;
+
+        .svg {
+            display: block;
+            // transition: transform var(--transition-cubic), opacity .75s ease;
+            // transition: transform .5s var(--transition-cubic-btn-cta), opacity .25s var(--transition-cubic-btn-cta);
+            transition: all .3s cubic-bezier(.215,.61,.355,1);
+
+            svg {
+                width: 15px;
+                aspect-ratio: 1;
+                transform: rotate(-90deg);
+            }
+
+            &.svg__2 {
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate3d(-100%, 50%, 0);
+                opacity: 0;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        &:hover {
+            .svgs {
+                .svg__1 {
+                    transform: translate3d(85%, -35%, 0);
+                    opacity: 0;
+                }
+                .svg__2 {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            .link-animated span {
+                transform: translateY(-100%);
+            }
+        }
+    }
+}

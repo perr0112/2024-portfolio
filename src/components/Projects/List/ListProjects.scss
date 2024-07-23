@@ -96,9 +96,44 @@
                 }
             }
 
+            .item__infos {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                margin: 1rem;
+                mix-blend-mode: difference;
+                color: white;
+                overflow: hidden;
+
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
+
+                p {
+                    position: relative;
+                    width: calc(100% - 2rem);
+                    font-size: var(--font-size-xs);
+                    will-change: transform;
+                    transition: transform var(--transition-cubic);
+
+                    &::after {
+                        content: attr(data-after);
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: max-content;
+                    }
+                }
+            }
+
             @media screen and (min-width: 1000px) {
                 &:hover img {
                     scale: 1.2;
+                }
+
+                &:hover p {
+                    transform: translateY(-100%);
                 }
             }
         }

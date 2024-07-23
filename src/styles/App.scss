@@ -17,6 +17,7 @@ body {
     background-color: var(--white);
     overscroll-behavior: none;
     overflow-x: hidden;
+    max-width: 1000px;
 }
 
 // body .main-content.body-content[data-home="true"] {
@@ -94,6 +95,15 @@ p.basic-size {
     }
 }
 
+.mbc-m {
+    display: block;
+    margin-block: var(--m-sizing);
+}
+
+.mbc-xl {
+    display: block;
+    margin-block: var(--xl-sizing);
+}
 
 .transition {
     position: fixed;

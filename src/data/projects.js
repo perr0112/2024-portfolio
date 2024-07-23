@@ -46,7 +46,8 @@ const projects = [
         name: "FreshZea",
         date: 2024,
         banner: "freshzea",
-        tags: ["Development", "UI, UX", "Design"]
+        tags: ["Development", "UI, UX", "Design"],
+        images: 5
     },
 ];
 

@@ -22,6 +22,10 @@ const ProjectItem = ({ data }) => {
                     <span key={index} className="item__tags-tag">{tag}</span>
                 )}
             </div> */}
+
+            <div data-target="false" className="item__infos">
+                <p data-after="See project">{data.date}</p>
+            </div>
         </div>
     )
 }

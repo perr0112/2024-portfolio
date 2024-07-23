@@ -3,11 +3,11 @@ import './ProjectView.scss';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCurrentProject } from "../../../utils/projects";
-import Linemask from '../../Linemask';
+import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
 
 const phrases = [
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    'Fugiat laborum a ducimus voluptatem dolores modi rerum nihil omnis recusandae corporis',
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
+    'Fugiat laborum a ducimus voluptatem dolores modi rerum nihil omnis recusandae corporis.',
     'Nihil assumenda culpa itaque, dolor voluptas, impedit.',
 ];
 
@@ -24,16 +24,12 @@ const ProjectView = () => {
         setTags(project.tags);
     }, [params]);
 
-    useEffect(() => {
-        console.log('current project', currentProject);
-    }, [currentProject]);
-
     return (
         <>
             <div className="project-view">
                 <img
                     className="banner"
-                    data-text-cursor="scroll"
+                    data-text-cursor="Scroll"
                     src={process.env.PUBLIC_URL + `/assets/pictures/works/${currentProject.banner}.png`}
                     alt={`${currentProject.name} banner`}
                 />
@@ -41,8 +37,14 @@ const ProjectView = () => {
 
             <div className="project-content">
                 
+                <div className="title">
+                    {currentProject.name}, {currentProject.date}
+                </div>
+
                 <div className="content__description">
-                    <Linemask phrases={phrases} className="project-font" />
+                    <div className="project__desc">
+                        <Linemask phrases={phrases} className="project-font" />
+                    </div>
 
                     {/* {tags && */}
                         <div className="project__tags">
@@ -51,9 +53,29 @@ const ProjectView = () => {
                             ))} */}
                             <Linemask phrases={["Roles"]} className="project-roles" />
                             <Linemask phrases={tags || []} className="project-font-tags" />
+
+                            <ButtonLink
+                                classNames="mbc-m"
+                            >
+                                View project
+                            </ButtonLink>
                         </div>
                     {/* } */}
                 </div>
+
+                <div className="content__images mbc-xl">
+                    {Array(currentProject.images).fill().map((index, i) =>
+                        // <p>img {i}</p>
+                        <AnimatedImg
+                            src={process.env.PUBLIC_URL + `/assets/pictures/workview/${currentProject.banner}/preview-${i + 1}.png`}
+                            alt={i+1}
+                        />
+                    )}
+                </div>
+
+                {currentProject.images}
+
+                <p>TODO::: next project on scroll</p>
 
             </div>
         </>

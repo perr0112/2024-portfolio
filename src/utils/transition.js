@@ -38,7 +38,8 @@ export function transition(
     }, `-=0.5`)
 
     tl.to(titleTransition, {
-        y: '-100%'
+        y: '-100%',
+        onStart: () => window.scrollTo({ top: 0 })
     }, `+=${DURATION_TRANSITION}`)
 
     tl.to(transition, {

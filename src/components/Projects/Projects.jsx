@@ -1,5 +1,5 @@
 import ListProjects from './List/ListProjects';
-import Linemask from '../Linemask';
+import { Linemask } from '../commons/';
 
 import './Projects.scss';
 
