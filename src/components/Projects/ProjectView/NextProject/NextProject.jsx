@@ -2,9 +2,10 @@ import './NextProject.scss';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { projectView } from '../../../../utils/projectView';
 import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,22 +16,24 @@ const NextProject = ({
     const navigate = useNavigate();
     const nextProject = useRef(null);
 
+    const [nextId, setNextId] = useState(null);
+
     useEffect(() => {
+        console.log(next.id)
+        setNextId(next.id);
+    })
+
+    useEffect(() => {
+        const bottom = window.innerHeight;
+        console.log(bottom);
         if (current && next) {
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: nextProject.current,
+                    trigger: '.next-project-container',
                     start: "top top",
                     end: "bottom bottom",
                     scrub: true,
                     // markers: true,
-                    // onComplete: () => {
-                        // console.log('completed');
-                        // if (nextProject.current.getBoundingClientRect().bottom <= window.innerHeight) {
-                        //     console.log('ended');
-                        //     projectView(nextProject.current, `/project/${next.id}`, navigate, true);
-                        // }
-                    // }
                 }
             });
 
@@ -48,33 +51,40 @@ const NextProject = ({
             }, {
                 scale: 1,
                 // filter: 'blur(0px)',
-                // onComplete: () => {
-                //     console.log('completed');
-                // }
+                onComplete: () => {
+                    // if () {
+                    // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                    // }
+                    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                        console.log('completed');
+                        // projectView(nextProject.current, `/project/${nextId}`, navigate, true);
+                        projectView(nextProject.current, nextId, navigate, true);
+                    }
+                }
             }, '<')
         }
-    }, [current, next, navigate]);
+    }, [navigate, current, next, nextId]);
 
     if (!current || !next) {
         return null;
     }
 
     return (
-        <div className="next-project-container" ref={nextProject}>
-            
+        <div data-nextid={next.id} className="next-project-container" ref={nextProject}>
+
             <div className="sticky-section">
 
                 <div className="sticky__content">
-                    <span className="light-info">(Scroll for next project)</span>
+                    <span className="light-info" data-target="false">(Scroll for next project)</span>
 
                     <div className="content__next">
 
-                        <div className="cases">
+                        <div className="cases" data-target="false">
                             <p>{current.name}</p>
                             <p>{next.name} - next case</p>
                         </div>
 
-                        <div className="progress-bar">
+                        <div className="progress-bar" data-target="false">
                             <span>0{current.id}</span>
 
                             <div className="lines">
@@ -87,7 +97,7 @@ const NextProject = ({
 
                     </div>
 
-                    <img
+                    <LazyLoadImage
                         className="banner next-project"
                         data-text-cursor="Next project"
                         src={process.env.PUBLIC_URL + `/assets/pictures/works/${next.banner}.png`}

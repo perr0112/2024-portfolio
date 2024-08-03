@@ -7,6 +7,7 @@ import NextProject from './NextProject/NextProject';
 import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
 
 import { getCurrentProject, getNextProject } from "../../../utils/projects";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const phrases = [
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
@@ -24,23 +25,25 @@ const ProjectView = () => {
     useEffect(() => {
         const project = getCurrentProject(params.id);
         setCurrentProject(project);
-        setTags(project.tags);
+        setTags(project?.tags);
         const nextProject = getNextProject(project.id);
         setNextProject(nextProject);
     }, [params]);
 
     return (
         <>
-            <div className="project-view">
-                <img
+            <div className="project-view" data-target="false">
+                <LazyLoadImage
                     className="banner"
                     data-text-cursor="Scroll"
                     src={process.env.PUBLIC_URL + `/assets/pictures/works/${currentProject.banner}.png`}
                     alt={`${currentProject.name} banner`}
                 />
+
+                <div className="scroll-down-mobile">Scroll down</div>
             </div>
 
-            <div className="project-content">
+            <div className="project-content" data-target="false">
                 
                 <div className="title">
                     {currentProject.name}, {currentProject.date}
@@ -51,7 +54,7 @@ const ProjectView = () => {
                         <Linemask phrases={phrases} className="project-font" />
                     </div>
 
-                    {/* {tags && */}
+                    {tags &&
                         <div className="project__tags">
                             {/* {currentProject.tags?.map((tag) => (
                                 <p>{tag}</p>
@@ -65,15 +68,16 @@ const ProjectView = () => {
                                 View project
                             </ButtonLink>
                         </div>
-                    {/* } */}
+                    }
                 </div>
 
                 <div className="content__images mbc-xl">
                     {Array(currentProject.images).fill().map((index, i) =>
                         // <p>img {i}</p>
                         <AnimatedImg
+                        // <img
                             src={process.env.PUBLIC_URL + `/assets/pictures/workview/${currentProject.banner}/preview-${i + 1}.png`}
-                            alt={i+1}
+                            alt={`${i+1}'s preview`}
                         />
                     )}
                 </div>

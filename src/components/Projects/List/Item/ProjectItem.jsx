@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { projectView } from "../../../../utils/projectView";
 import { useNavigate } from "react-router-dom";
 
@@ -5,8 +6,12 @@ const ProjectItem = ({ data }) => {
     const navigate = useNavigate();
 
     const handleProjectView = (e) => {
-        projectView(e, `/project/${data.id}`, navigate, false);
+        projectView(e, data.id, navigate, false);
     };
+
+    /* TODO : ne pas prendre toute la taille de l'écran, mais comme ici :
+                   https://lefruitstudio.fr/works/artcurial-campaign-2023
+    */
 
     return (
         <div
@@ -15,7 +20,10 @@ const ProjectItem = ({ data }) => {
             onClick={handleProjectView}
             data-target="false"
         >
-            <img src={process.env.PUBLIC_URL + `/assets/pictures/works/${data.banner}.png`} alt={`${data.name} banner`} />
+            <LazyLoadImage
+                src={process.env.PUBLIC_URL + `/assets/pictures/works/${data.banner}.png`}
+                alt={`${data.name} banner`}
+            />
 
             {/* <div className="item__tags">
                 {data.tags.map((tag, index) =>

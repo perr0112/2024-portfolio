@@ -10,6 +10,8 @@ export function projectView(
     fromProject,
 ) {
 
+    // console.log('projectview', href, event, navigate, fromProject);
+
     const tl = gsap.timeline({
         defaults: {
             ease: 'Expo.easeInOut',
@@ -29,7 +31,7 @@ export function projectView(
             gsap.to(data, {
                 opacity: 0,
                 pointerEvents: 'none',
-                duration: DURATION_TRANSITION,
+                duration: fromProject ? 0 : DURATION_TRANSITION - 0.15,
                 ease: 'Expo.easeInOut',
             })
         })
@@ -41,6 +43,7 @@ export function projectView(
 
     tl.set(imgCurrentProject, {
         scale: 1.2 / 1.8,
+        // scale: 1.2 / 1.6,
         borderRadius: '10px;',
         position: 'fixed',
         top: imgRect.top,
@@ -54,7 +57,7 @@ export function projectView(
     // }).set(imgCurrentProject, {
     //     // scale: 2,
     // }).
-    }).to(imgCurrentProject, {
+    }, '>').to(imgCurrentProject, {
         scale: 1,
         width: '100vw',
         height: '100dvh',
@@ -63,12 +66,13 @@ export function projectView(
         right: 0,
         bottom: 0,
         borderRadius: '0px;',
-        // duration: DURATION_TRANSITION + 0.5,
-        duration: DURATION_TRANSITION + 1,
+        duration: DURATION_TRANSITION + 0.5,
+        // duration: DURATION_TRANSITION + 1,
         ease: 'Expo.easeInOut',
         onComplete: () => {
             window.scrollTo({ top: 0 });
-            navigate(href);
+            navigate(`/project/${href}`);
         }
     }, '+=0.05');
+    // }, '+=1');
 }

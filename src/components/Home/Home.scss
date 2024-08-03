@@ -1,16 +1,64 @@
 @import '../../styles/variables.scss';
 
 .home-container {
-    display: none;
+    position: relative;
+    // display: none;
+    // background-color: red;
+    // height: calc(100dvh - 15dvh);
+    height: calc(100dvh - min(calc(100px + 10vw), 200px));
 
-    .container__title {
+    .home__content {
 
-        h1 {
-            font-size: var(--font-size-3xl);
+        background-color: brown;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .container__title {
+    
+            h1 {
+                font-size: var(--font-size-3xl);
+                text-align: center;
+                margin-bottom: 10%;
+            }
+        }
+    
+        .container__infos {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            background-color: red;
+
+            .infos__main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                background-color: green;
+
+                @media screen and (max-width: 1000px) {
+                    text-align: center;
+                }
+
+                .infos {
+                    color: var(--black);
+
+                    &.large {
+                        font-size: var(--font-size-l);
+                        // margin-left: 50px;
+
+                        @media screen and (min-width: 1000px) {
+                            text-indent: 50px;
+                        }
+                    }
+
+                    &.light {
+                        font-size: var(--font-size-m);
+                    }
+                }
+            }
         }
     }
 
-    .container__infos {
-
-    }
 }

@@ -9,15 +9,26 @@ function getCurrentProject(id) {
 
 /* Depending on current id */
 function getNextProject(id) {
+    // if (id === -1) {
+    //     return;
+    // }
+
+    // if (id === projects.length) {
+    //     return projects[0];
+    // } else {
+    //     return projects[id];
+    // }
+    /* Depending on current id */
     if (id === -1) {
         return;
     }
 
-    if (id === projects.length) {
-        return projects[0];
+    if (id === 1) {
+        return projects[projects.length - 1];
     } else {
-        return projects[id];
+        return projects[id - 2];
     }
+
 }
 
 export { getCurrentProject, getNextProject }

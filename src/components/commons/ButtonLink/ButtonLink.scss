@@ -49,7 +49,8 @@ a.btn {
             transition: all .3s cubic-bezier(.215,.61,.355,1);
 
             svg {
-                width: 15px;
+                // width: 15px;
+                width: 10px;
                 aspect-ratio: 1;
                 transform: rotate(-90deg);
             }
