@@ -30,7 +30,8 @@ body {
 body .main-content.body-content {
     // background-color: red;
     // padding-top: 150px;
-    padding-top: min(calc(100px + 10vw), 200px);
+    // padding-top: min(calc(100px + 10vw), 200px);
+    padding-top: min(calc(100px + 10vw), 150px);
     padding-inline: 1rem;
     width: 100vw;
     min-height: 100vh;
@@ -103,6 +104,10 @@ p.basic-size {
 .mbc-xl {
     display: block;
     margin-block: var(--xl-sizing);
+}
+
+span.primary-keyword {
+    color: var(--primary-blue);
 }
 
 .transition {

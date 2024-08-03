@@ -1,9 +1,13 @@
 import './Home.scss';
 
-import gsap from 'gsap';
-import { Face } from '../commons';
-import Loader from "./Loader/Loader";
 import { useEffect } from 'react';
+import gsap from 'gsap';
+
+import Loader from "./Loader/Loader";
+
+import { Face } from '../commons';
+import Star from '../commons/Icons/Star';
+import Arrow from '../commons/Icons/Arrow';
 
 const Home = () => {
 
@@ -42,18 +46,37 @@ const Home = () => {
                 <div className="home__content">
 
                     <div className="container__title">
-                        <h1>Bonjour, hello</h1>
+                        <h1>Bonjour, hello.</h1>
                     </div>
 
                     <div className="container__infos">
                         <Face />
 
                         <div className="infos__main">
-                            <p className="infos large">I’m a young creative developer,</p>
+                            <p className="infos large">I’m a young <span className="primary-keyword">creative developer</span>,</p>
                             <p className="infos light">who likes to make beautiful things on the web,
                                 <br />
-                            for the web</p>
+                            for the web.</p>
                         </div>
+                    </div>
+
+                    <div className="bottom__container">
+                        <div className="bottom__infos">
+                            <Star />
+
+                            <div className="bottom__text">
+                                <p>Since 2022</p>
+                                <p>and for a while</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bottom-left__container">
+                        <div className="bottom-left__text">
+                            <p>Scroll to</p>
+                            <p>discover</p>
+                        </div>
+                        <Arrow />
                     </div>
 
                 </div>
