@@ -95,6 +95,12 @@ const Loader = () => {
         tl.set('nav.header', {
             pointerEvents: 'auto'
         })
+
+        tl.to('.home-container', {
+            opacity: 1,
+            duration: durationDefault,
+            ease: 'Expo.easeInOut',
+        })
         // }, `-=${durationDefault - (0.5 + 0.15)}`)
     });
 

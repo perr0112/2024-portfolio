@@ -2,6 +2,7 @@
 
 .home-container {
     position: relative;
+    opacity: 0;
     // display: none;
     // background-color: red;
     // height: calc(100dvh - 15dvh);
@@ -23,6 +24,12 @@
                 text-align: center;
                 font-weight: 500;
                 // margin-bottom: 10%;
+
+                .perspective-letter {
+                    display: inline-block;
+                    perspective: 750px;
+                    color: var(--black);
+                }
             }
         }
     

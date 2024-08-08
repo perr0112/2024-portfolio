@@ -2,6 +2,7 @@ import './Home.scss';
 
 import { useEffect } from 'react';
 import gsap from 'gsap';
+import { motion } from 'framer-motion';
 
 import Loader from "./Loader/Loader";
 
@@ -12,27 +13,37 @@ import Arrow from '../commons/Icons/Arrow';
 const Home = () => {
 
     const mouseMove = (e) => {
-        const eyes = document.querySelectorAll('.pupille');
+        const eyes = document.querySelectorAll('.pupille-wrapper');
+    
+        // Obtenez la position du curseur
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+    
+        eyes.forEach((eye) => {
+            const eyeRect = eye.getBoundingClientRect();
+            const eyeX = eyeRect.left + eyeRect.width / 2;
+            const eyeY = eyeRect.top + eyeRect.height / 2;
+    
+            const deltaX = mouseX - eyeX;
+            const deltaY = mouseY - eyeY;
+    
+            const translateX = deltaX / 50 > 30 ? 30 : deltaX / 50;
+            const translateY = deltaY / 50 > 30 ? 30 : deltaY / 50;
 
-        console.log(e.clientX, e.clientY);
-        console.log(window.innerWidth, window.innerHeight);
-
-        // const mouseX = (e.clientX / window.innerWidth) * 50;
-        // const mouseY = (e.clientY / window.innerHeight) * 50;
-
-        const mouseX = (e.clientX - window.innerWidth + 200) / 15;
-        const mouseY = (e.clientY - window.innerHeight) / 15;
-
-        console.log('mouse', mouseX, mouseY);
-        gsap.to(eyes, {
-            transform: `translate(${mouseX}%, ${mouseY}%)`,
-            duration: 1.2,
-            ease: 'Expo.easeOut',
+            console.log('eyes', translateX, translateY);
+    
+            gsap.to(eye, {
+                x: translateX,
+                y: translateY,
+                duration: 1.2,
+                ease: 'Expo.easeOut',
+            });
         });
-    }
+    };    
 
     useEffect(() => {
         window.addEventListener('mousemove', mouseMove);
+        window.addEventListener('resize', mouseMove);
 
         return () => {
             window.removeEventListener('mousemove', mouseMove);
@@ -41,12 +52,30 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* <Loader /> */}
+            <Loader />
             <div className="home-container">
                 <div className="home__content">
 
                     <div className="container__title">
-                        <h1>Bonjour, hello.</h1>
+                        <h1>Bonjour, hell
+                                <motion.span
+                                    className="perspective-letter"
+                                    animate={{
+                                        transform: [
+                                            'translate3d(0, 0, 0) rotateY(540deg)',
+                                            'translate3d(0, 0, 0) rotateY(0deg)',
+                                        ]
+                                    }}
+                                    transition={{
+                                        duration: 2.4,
+                                        ease: 'easeOut',
+                                        repeat: Infinity,
+                                        repeatDelay: 1.8,
+                                    }}
+                                >
+                                    o
+                                </motion.span>
+                            .</h1>
                     </div>
 
                     <div className="container__infos">
@@ -62,7 +91,22 @@ const Home = () => {
 
                     <div className="bottom__container">
                         <div className="bottom__infos">
-                            <Star />
+                            <motion.div
+                                animate={{
+                                    transform: [
+                                        'rotate(0deg)',
+                                        'rotate(360deg)',
+                                    ]
+                                }}
+                                transition={{
+                                    duration: 2.4,
+                                    ease: 'anticipate',
+                                    repeat: Infinity,
+                                    repeatDelay: 1.2,
+                                }}
+                            >
+                                <Star />
+                            </motion.div>
 
                             <div className="bottom__text">
                                 <p>Since 2022</p>

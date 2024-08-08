@@ -29,8 +29,10 @@
 
 .preview-works {
     width: 50%;
+    min-width: 400px;
     max-width: 400px;
-    aspect-ratio: 1;
+    height: 100%;
+    max-height: 400px;
     padding: 2rem;
 }
 

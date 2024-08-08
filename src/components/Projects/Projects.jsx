@@ -12,6 +12,10 @@ const Projects = () => {
 
     return (
         <div className="projects-container">
+            <p>
+                s'inspirer/refaire la transition projects - project
+                <a href="https://www.accordion.net.au/work">ici</a>
+            </p>
 
             <div className="container__top" data-target="false">
                 <h1 className="title_page">

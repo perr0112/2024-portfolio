@@ -50,7 +50,7 @@ export function transition(
     }, '-=1')
 
     tl.set(transition, {
-        y: '100dvh'
+        y: '105dvh'
     }, '>')
 
     tl.set(titleTransition, {

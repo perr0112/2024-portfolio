@@ -37,7 +37,7 @@
                 border-radius: 50%;
                 overflow: hidden;
 
-                .pupille {
+                .pupille-wrapper {
                     position: absolute;
                     width: 30%;
                     aspect-ratio: 1;
@@ -45,7 +45,21 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
                     border-radius: 50%;
-                    background-color: var(--black);
+                    // background-color: var(--black);
+                    border: 1px solid var(--black);
+                    overflow: hidden;
+                    
+                    .pupille {
+                        position: absolute;
+                        transform-origin: bottom;
+                        background-color: black;
+                        width: 102.5%;
+                        height: 100%;
+                        border-radius: 50%;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                    }
                 }
             }
         }
