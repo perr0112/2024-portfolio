@@ -1,6 +1,45 @@
 .projects-content {
-    margin-top: var(--l-sizing);
+    // margin-top: var(--l-sizing);
     padding-bottom: 1rem;
+
+    .type-show {
+        // background-color: red;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: var(--xs-sizing) 0;
+
+        .type {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: var(--font-size-xs);
+            padding: 5px 10px;
+            border-radius: 9999px;
+            cursor: pointer;
+            
+            &[data-active="true"] {
+                background-color: var(--primary-green);
+                color: var(--white);
+            }
+
+            &[data-active="false"] {
+                background-color: var(--background-green);
+                border: 1px solid var(--primary-green);
+            }
+
+            &.--1 {
+                z-index: 999;
+                margin-right: -3.5rem;
+            }
+
+            &.--2 {
+                padding-left: 4rem;
+            }
+        }
+    }
 
     .filters {
         // background-color: red;
@@ -45,24 +84,44 @@
         position: relative;
         // width: calc(100vw - 2rem);
         width: 100vw;
-        margin-top: var(--l-sizing);
+        // margin-top: var(--l-sizing);
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: var(--s-sizing);
 
+        .line-projects {
+            background-color: var(--primary-green);
+            height: 2px;
+        }
+
         .project-item {
             position: relative;
             cursor: pointer;
+            // width: calc(50% - 2rem);
             width: calc(100% - 2rem);
-            height: 250px;
-            border-radius: 10px;
+            // max-height: 400px;
+            height: 400px;
+            // height: 10%;
+            // border-radius: 10px;
             // border: 1px solid var(--black);
             overflow: hidden;
 
             @media screen and (min-width: 1000px) {
+                width: calc(50% - 2rem);
                 // width: calc(100% / 3);
-                width: calc(100% / 3 - 2rem)
+                // width: calc(100% / 3 - 2rem)
+            }
+
+            .mask-item {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
             }
 
             img {

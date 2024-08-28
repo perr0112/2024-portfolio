@@ -16,10 +16,14 @@ const ProjectItem = ({ data }) => {
     return (
         <div
             className="project-item"
-            data-text-cursor={data.name}
+            // data-text-cursor={data.name}
             onClick={handleProjectView}
             data-target="false"
         >
+            <div
+                className="mask-item"
+                data-text-cursor={data.name}
+            />
             <LazyLoadImage
                 src={process.env.PUBLIC_URL + `/assets/pictures/works/${data.banner}.png`}
                 alt={`${data.name} banner`}

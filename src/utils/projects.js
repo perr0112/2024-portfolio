@@ -23,10 +23,12 @@ function getNextProject(id) {
         return;
     }
 
-    if (id === 1) {
-        return projects[projects.length - 1];
+    console.log('id', id);
+
+    if (id !== projects.length) {
+        return projects[id];
     } else {
-        return projects[id - 2];
+        return projects[0];
     }
 
 }

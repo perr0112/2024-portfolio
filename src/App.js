@@ -10,8 +10,11 @@ import Projects from './components/Projects/Projects';
 import Cursor from './components/Cursor/Cursor';
 import Lenis from 'lenis';
 import ProjectView from './components/Projects/ProjectView/ProjectView';
+import useWindowDimensions from './hooks/useWindow';
 
 function App() {
+  const { width } = useWindowDimensions();
+
   const location = useLocation();
   const [theme, setTheme] = useState('basic');
 
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Cursor />
+      {width > 1024 && <Cursor />}
       <div className="transition" data-text-cursor="Loading">
         <div className="linemask">
           <div className="title-transition"></div>

@@ -56,4 +56,6 @@ const projects = [
 
 const TAGS = ["Development", "UI, UX", "Design"];
 
-export { projects, TAGS }
+const LENGTHPROJECTS = projects.length;
+
+export { projects, TAGS, LENGTHPROJECTS }

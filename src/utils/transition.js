@@ -29,12 +29,13 @@ export function transition(
 
     tl.to(transition, {
         y: 0,
-        onStart: () => body.classList.add('transitioning'),
+        // onStart: () => body.classList.add('transitioning'),
         onComplete: () => navigate(href)
     })
 
     tl.to(titleTransition, {
         y: 0,
+        onStart: () => body.classList.add('transitioning'),
     }, `-=0.5`)
 
     tl.to(titleTransition, {

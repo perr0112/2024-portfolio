@@ -2,6 +2,7 @@ import ListProjects from './List/ListProjects';
 import { Linemask } from '../commons/';
 
 import './Projects.scss';
+import { LENGTHPROJECTS } from '../../data/projects';
 
 const phrases = [
     "Discover this selection of work, i have done in my spare time, as a freelancer or during my studies.",
@@ -12,22 +13,20 @@ const Projects = () => {
 
     return (
         <div className="projects-container">
-            <p>
-                s'inspirer/refaire la transition projects - project
-                <a href="https://www.accordion.net.au/work">ici</a>
-            </p>
 
             <div className="container__top" data-target="false">
                 <h1 className="title_page">
-                    Projects
+                    Selected Works
+                    <span className="length-projects">({LENGTHPROJECTS})</span>
                 </h1>
                 <div className="paragraphs">
                     <Linemask className="basic-size" phrases={phrases} />
                 </div>
+
+                <div className="line container__bottom" />
             </div>
 
             <ListProjects />
-
         </div>
     )
 }

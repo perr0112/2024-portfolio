@@ -1,0 +1,140 @@
+img {
+    object-fit: cover;
+}
+
+.minimap-container {
+
+    .sticky-top {
+        position: relative;
+        width: 100vw;
+
+        .sticky-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+
+            .minimap {
+                position: sticky;
+                width: 25%;
+                height: 100vh;
+                top: 0;
+                background-color: red;
+
+                @media screen and (max-width: 1024px) {
+                    display: none;
+                }
+
+                .preview {
+                    position: relative;
+                    /* padding-top: calc(50vh - 75px); */
+                    padding-block: calc(50vh - 75px);
+                    width: 100%;
+                    /* height: 100%; */
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: var(--gap);
+                    /* background-color: red; */
+                    /* padding-bottom: 1px * calc(150 / 2);
+                    padding-bottom: 120px; */
+                    will-change: transform;
+
+                    .item-preview {
+                        position: relative;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            position: relative;
+                            height: 150px;
+                            max-width: 100px;
+                            width: 70%;
+                            /* height: 50%; */
+                        }
+                    }
+                }
+
+                .current-indicator {
+                    position: absolute;
+                    /* top: calc(25vh - 11px); */
+                    /* top: calc(50vh - 12.5px); */
+                    top: calc(50vh - (75px + 12.5px));
+                    left: 50%;
+                    right: 50%;
+                    transform: translateX(-50%);
+                    height: 175px;
+                    width: 125px;
+                    border: 1px dashed black;
+                    border-radius: 5px;
+                }
+            }
+
+            .projects__showcase {
+                position: relative;
+                width: 75%;
+                height: 100%;
+                padding-top: calc(50vh - 250px);
+                /* width: 400px;
+                height: 500px; */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: calc(var(--gap) * 4);
+
+                @media screen and (max-width: 1024px) {
+                    width: 100%;
+                }
+
+                .item-showcase {
+                    position: relative;
+                    /* width: 150px;
+                    height: 250px; */
+                    /* max-width: 250px;
+                    max-height: 450px;
+                    width: 50%;
+                    height: 50%; */
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--gap);
+
+                    .showcase__img {
+                        position: relative;
+                        /* width: 100%;
+                        height: 100%; */
+                        width: 400px;
+                        height: 500px;
+
+                        img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .showcase__infos {
+                        position: relative;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        p {
+                            font-size: var(--font-size-xs);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

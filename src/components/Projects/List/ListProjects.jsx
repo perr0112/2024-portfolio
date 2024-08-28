@@ -1,17 +1,18 @@
 import './ListProjects.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import ProjectItem from './Item/ProjectItem';
+import Minimap from '../Minimap/Minimap';
 import { projects, TAGS } from '../../../data/projects';
 
-const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
+const sortedProjects = [...projects].sort((a, b) => a.id - b.id);
 
 const ListProjects = () => {
 
     const [selectedTags, setSelectedTags] = useState([]);
     const [sortedProjectsTags, setSortedProjectsTags] = useState(sortedProjects);
-
+    
     const handleTagClick = (tagName) => {
         setSelectedTags((prevSelectedTags) => {
             if (prevSelectedTags.includes(tagName)) {
@@ -32,31 +33,54 @@ const ListProjects = () => {
             setSortedProjectsTags(filtered);
         }
     }, [selectedTags]);
-
+    
     useEffect(() => {
         console.log(selectedTags);
     }, [selectedTags])
+    
+    const [typeShow, setTypeShow] = useState('Minimap');
+
+    const handleTypeShow = useCallback((e) => {
+        console.log(e);
+        setTypeShow(e);
+    });
 
     return (
         <div className="projects-content">
-
-            <div className="filters" data-target="false">
+            
+            {/* <div className="filters" data-target="false">
                 <div className="tags-avalaible">
-                    {TAGS.map((tag, index) =>
+                {TAGS.map((tag, index) =>
                         <Tag
-                            key={index}
-                            name={tag}
-                            isActive={selectedTags.includes(tag)}
-                            onClick={() => handleTagClick(tag)}
+                        key={index}
+                        name={tag}
+                        isActive={selectedTags.includes(tag)}
+                        onClick={() => handleTagClick(tag)}
                         />
-                    )}
+                        )}
+                </div>
+            </div> */}
+
+            <div className="type-show">
+                <div className="type --1" data-active={typeShow === 'Minimap'} onClick={() => handleTypeShow('Minimap')}>
+                    Minimap
+                </div>
+                <div className="type --2" data-active={typeShow === 'Cards'} onClick={() => handleTypeShow('Cards')}>
+                    Cards
                 </div>
             </div>
 
+            {/* <div className="projects-filters">
+                
+            </div> */}
+
             <div className="list-projects">
-                {sortedProjectsTags.map((data, index) =>
+                <div className="line line-projects" />
+                {typeShow === 'Cards' && sortedProjectsTags.map((data, index) =>
                     <ProjectItem key={index} data={data} />
                 )}
+
+                {typeShow === 'Minimap' && <Minimap projects={sortedProjects} />}
             </div>
 
         </div>

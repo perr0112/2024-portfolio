@@ -74,13 +74,21 @@ html.lenis, html.lenis body {
 /*======= components =========*/
 /*============================*/
 
-body.transitioning .header .menu,
-body.transitioning .header .line {
-    // visibility: hidden;
+// body.transitioning .header .menu {
+//     visibility: hidden;
+// }
+
+body.transitioning .main-content > * {
+    display: none;
+    transition: display 1s ease;
 }
 
 h1.title_page {
     font-size: var(--font-size-xxl);
+}
+
+p.large-size {
+    font-size: var(--font-size-m);
 }
 
 p.basic-size {
@@ -94,6 +102,11 @@ p.basic-size {
     p {
         transform: translateY(100%);
     }
+}
+
+.line {
+    width: calc(100% - 2rem);
+    height: 1px;
 }
 
 .mbc-m {
