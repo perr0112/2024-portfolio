@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from 'gsap';
 
 const ItemPreview = ({ data }) => {
-    console.log('data', data);
     return (
         <div className="item-preview">
             <img
@@ -36,65 +35,97 @@ const Minimap = ({ projects }) => {
     const containerRef = useRef(null);
     const previewRef = useRef(null);
     const projectsRef = useRef(null);
+    const minimapRef = useRef(null);
 
-    const [headerHeight, setHeaderHeight] = useState(0);
-
-    useEffect(() => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', headerHeight);
-    }, [headerHeight]);
+    const headerHeightRef = useRef(0);
 
     useEffect(() => {
+        const container = containerRef.current;
+        const onePreview = document.querySelectorAll('.item-showcase')[0];
 
-        const detectScroll = () => {
-            const container = containerRef.current;
-            const preview = previewRef.current;
-            const projects = projectsRef.current;
+        if (container && onePreview) {
+            const parentTop = container.getBoundingClientRect().top + window.scrollY;
+            const childTop = onePreview.getBoundingClientRect().top;
+            let res = Math.abs(parentTop - childTop);
+            headerHeightRef.current = res;
+        }
+    }, [projects]);
 
-            if (container) {
-                const containerTop = container.getBoundingClientRect().top + window.scrollY;
-                setHeaderHeight(containerTop);
-            }
+    const detectScroll = () => {
+        const container = containerRef.current;
+        const preview = previewRef.current;
+        const projects = projectsRef.current;
+        const minimap = minimapRef.current;
 
-            if (!container || !preview || !projects) return;
+        const oneCard = document.querySelectorAll('.item-preview')[0];
+        const onePreview = document.querySelectorAll('.item-showcase')[0];
 
-            let currentScroll = window.scrollY;
-            let currentPosTop = container.getBoundingClientRect().top;
-            let currentPosBottom = container.getBoundingClientRect().bottom;
+        if (!container || !preview || !projects) return;
 
-            const heightMinimap = preview.offsetHeight;
-            const heightProjects = projects.offsetHeight;
+        let currentPosTop = container.getBoundingClientRect().top;
+        let currentPosBottom = container.getBoundingClientRect().bottom;
 
-            // let totalLength = 24 * projects.children.length;
-            let totalLength = 0;
-            // console.log('============', projects.children.length);
+        let minimapPosTop = preview.getBoundingClientRect().top;
+        console.log('mt', minimapPosTop);
 
-            // let headerHeight = 550;
-            // console.log(container.offsetTop);
+        // const heightMinimap = preview.offsetHeight - (2 * (window.innerHeight / 2 - 75)) - (oneCard.offsetHeight + 24 * 6);
+        // const heightMinimap = preview.offsetHeight - (2 * (window.innerHeight / 2 - 75)) - (preview.offsetHeight / 6);
+        const heightMinimap = minimap.offsetHeight;
+        // const heightMinimap = oneCard.offsetHeight * 6;
+        console.log('h', heightMinimap);
+        // const heightMinimap = preview.offsetHeight - (2 * (window.innerHeight / 2 - 75) + 6 * 24);
+        // const heightMinimap = preview.offsetHeight - (window.innerHeight / 2 - 150);
 
-            [...projects.children].forEach((element) => {
-                totalLength += element.offsetHeight;
-                // console.log('el', element, element.offsetHeight)
+        const heightProjects = projects.offsetHeight - (window.innerHeight / 2 - 250);
+
+        const widthMinimap = preview.offsetWidth;
+        const widthProjects = projects.offsetWidth;
+        
+        let currentScroll = window.scrollY;
+
+        // console.log('hs', heightMinimap, heightProjects, heightMinimap / heightProjects);
+        // console.log('ws', widthMinimap, widthProjects, widthMinimap / widthProjects);
+
+        if (0 > currentPosTop && currentPosBottom >= window.innerHeight) {
+            // let ratio = heightMinimap / heightProjects;
+            let ratio = heightMinimap / heightProjects;
+
+            // console.log(headerHeightRef.current);
+
+            // let res = -1 * ((currentScroll - headerHeightRef.current) * ratio);
+            let res = -1 * ((currentScroll) * ratio);
+            preview.style.transform = `translateY(${res}px)`;
+
+            /*
+
+            tl.fromTo(mimeGroup.find('.mime-scroll-cards'), {
+                y: (mimeScrollWrapperHeight / 2) - (mimeScrollCardSingleHeight / 2),  
+            }, {
+                y: ((mimeScrollCardsHeight - (mimeScrollWrapperHeight / 2) - (mimeScrollCardSingleHeight / 2)) * -1),
+                ease: "none"
             });
 
-            // console.log('============', totalLength);
+            mimeScrollCardsHeight = miniMap
+            mimeScrollWrapperHeight = hauteur de 2 cards + gap
+            mimeScrollCardSingleHeight = current indicator
 
-            if (0 > currentPosTop && currentPosBottom >= window.innerHeight) {
-                // let scrollValue = -1 * ((currentScroll - headerHeight) * totalLength / (heightProjects - (window.innerHeight * 0.5)));
-                // let scrollValue = -1 * ((currentScroll - headerHeight - 450) * totalLength / (heightProjects - (window.innerHeight * 0.2)));
-                let scrollValue = -1 *
-                    (
-                        (currentScroll - headerHeight - 450) * totalLength
-                        /
-                        (heightProjects - (window.innerHeight * 0.5 - (250 - 50 - 7.5))
-                        // (heightProjects - window.innerHeight / 100 + (250 + 50 + 7.5)
-                        // (heightProjects + window.innerHeight * 10 + (250 + 50 + 7.5)
-                        // (heightProjects + window.innerHeight * 5
-                    )
-                );
-                // preview.style.transform = `translateY(${scrollValue > 0 ? 0 : scrollValue > heightMinimap ? heightMinimap : scrollValue}px)`;
-                preview.style.transform = `translateY(${scrollValue > 0 ? 0 : scrollValue}px)`;
-            }
-        };
+            */
+
+            // let res = scrollValue > 0 ? 0 : scrollValue > heightMinimap ? heightMinimap : scrollValue;
+
+            // let scrollValueR = -1 * ((currentScroll + headerHeight + totalLength) / heightProjects - (window.innerHeight / 2));
+            // preview.style.transform = `translateY(${scrollValue > 0 ? 0 : scrollValue > heightMinimap ? heightMinimap : scrollValue}px)`;
+            // preview.style.transform = `translateY(${scrollValue > 0 ? 0 : scrollValue}px)`;
+            // let res = -1 * (headerHei);
+            // console.log('h', headerHei);
+            // console.log('=', res);
+
+            // let ans = (-1 * (heightMinimap * res) / heightProjects - (onePreview.offsetHeight / 2) + oneCard.offsetHeight + 16);
+            // let res = (-1 * (heightMinimap) / heightProjects - (onePreview.offsetHeight / 2));
+        }
+    };
+
+    useEffect(() => {
 
         if (window.innerWidth >= 1024) {
             window.addEventListener("scroll", detectScroll);
@@ -111,7 +142,7 @@ const Minimap = ({ projects }) => {
         <div className="minimap-container">
             <div className="sticky-top" ref={containerRef}>
                 <div className="sticky-content">
-                    <div className="minimap">
+                    <div className="minimap" ref={minimapRef}>
                         <div className="preview" ref={previewRef}>
                             {projects.map((project, i) => (
                                 <ItemPreview key={i} data={project} />

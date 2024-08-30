@@ -37,7 +37,7 @@ img {
                     justify-content: center;
                     align-items: center;
                     gap: var(--gap);
-                    /* background-color: red; */
+                    // background-color: red;
                     /* padding-bottom: 1px * calc(150 / 2);
                     padding-bottom: 120px; */
                     will-change: transform;
@@ -65,6 +65,7 @@ img {
                     /* top: calc(25vh - 11px); */
                     /* top: calc(50vh - 12.5px); */
                     top: calc(50vh - (75px + 12.5px));
+                    // top: 0;
                     left: 50%;
                     right: 50%;
                     transform: translateX(-50%);
@@ -86,6 +87,7 @@ img {
                 flex-direction: column;
                 align-items: center;
                 gap: calc(var(--gap) * 4);
+                background-color: brown;
 
                 @media screen and (max-width: 1024px) {
                     width: 100%;

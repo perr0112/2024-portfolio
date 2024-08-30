@@ -9,6 +9,7 @@
     height: 15vh;
     padding: 1rem;
     mix-blend-mode: difference;
+    font-family: var(--titles-font-family);
 
     p {
         color: white;
@@ -67,35 +68,6 @@ nav.header {
         }
 
         li {
-
-            a {
-                position: relative;
-                display: flex;
-                flex-direction: row;
-                gap: 1px;
-                color: white;
-                text-decoration: none;
-                font-size: var(--font-size-s);
-
-                @media screen and (min-width: 1000px) {
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        width: 100%;
-                        height: 2px;
-                        background-color: white;
-                        bottom: -2px;
-                        transform: scaleX(0%);
-                        transform-origin: left;
-                        transition: all .35s ease-in-out;
-                    }
-                    
-                    &:hover::after {
-                        transform: scaleX(100%);
-                    }
-                }
-                
-            }
 
             a[data-active="true"] {
                 position: relative;

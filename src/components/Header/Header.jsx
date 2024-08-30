@@ -39,7 +39,7 @@ const Header = ({
                     {links.map((link, index) => {
                         return (
                             <li key={index}>
-                                <LinkTransition href={link.to} title={link.text} />
+                                <LinkTransition className={"link-line header"} href={link.to} title={link.text} />
                             </li>
                         )
                     })}
