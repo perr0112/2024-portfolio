@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { transition } from "../../utils/transition";
 
-const LinkTransition = ({ href, title, className }) => {
+const LinkTransition = ({ href, title, className, children }) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
 
@@ -16,7 +16,7 @@ const LinkTransition = ({ href, title, className }) => {
             onClick={() => handleTransition(href, title)}
             data-active={pathname === href}
         >
-            {title}
+            {!children ? title : children}
         </Link>
     )
 };

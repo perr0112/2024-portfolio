@@ -8,7 +8,7 @@ import experiences from '../../data/experiences';
 const phrases = [
     "My name is Clement P., and I'm a young up-and-coming creative developer.",
     "I'm an inquisitive student, a fan of design and, above all, a football fan. I like to bring rigour and solidity to a project as a whole.",
-    "I like to combine creativity, ingenuity and aesthetics in each of my projects, which you can find on this portfolio."
+    "I like to combine <span class='primary-keyword'>creativity</span>, <span class='primary-keyword'>ingenuity</span> and <span class='primary-keyword'>aesthetics</span> in each of my projects, which you can find on this portfolio."
 ];
 
 const Experience = ({ data }) => {
@@ -17,7 +17,7 @@ const Experience = ({ data }) => {
             <div className="experience-group">
                 <div className="group__main-infos">
                     <div className="infos__top">
-                        <p>{data.location}, <a target="_blank" href={data.linkCompany}>{data.company}</a></p>
+                        <p>{data.location}, <a className="link-right-line" target="_blank" href={data.linkCompany}>{data.company}</a></p>
                     </div>
                     <div className="infos__bottom">
                         <p>{data.begin}</p>
@@ -42,7 +42,8 @@ const About = () => {
 
     return (
         <div className="about-container">
-            
+            <h1>A REFAIRE : ça ne doit pas prendre le "milieu" mais être un peu flottant (à droite, à gauche)</h1>
+            <h1>A modif : projetview qui prend pas tout l'écran (?) + le margin qui est bugué sur le titre</h1>
             <div className="about__description">
                 {/* <div className="about-mask" data-text-cursor="Scroll for more" /> */}
                 <div className="description__icon">

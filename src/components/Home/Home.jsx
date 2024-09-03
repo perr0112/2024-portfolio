@@ -9,6 +9,7 @@ import Loader from "./Loader/Loader";
 import { Face } from '../commons';
 import Star from '../commons/Icons/Star';
 import Arrow from '../commons/Icons/Arrow';
+import HomePreview from './HomePreview';
 
 const Home = () => {
 
@@ -29,8 +30,6 @@ const Home = () => {
     
             const translateX = deltaX / 50 > 30 ? 30 : deltaX / 50;
             const translateY = deltaY / 50 > 30 ? 30 : deltaY / 50;
-
-            console.log('eyes', translateX, translateY);
     
             gsap.to(eye, {
                 x: translateX,
@@ -124,6 +123,10 @@ const Home = () => {
                     </div>
 
                 </div>
+            </div>
+
+            <div className="preview-container">
+                <HomePreview />
             </div>
         </div>
     )

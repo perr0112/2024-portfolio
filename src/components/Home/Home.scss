@@ -7,13 +7,15 @@
     // background-color: red;
     // height: calc(100dvh - 15dvh);
     // height: calc(100dvh - min(calc(100px + 10vw), 200px));
-    height: calc(100dvh - min(calc(100px + 10vw), 150px));
+    // height: calc(100dvh - min(calc(100px + 10vw), 150px));
+    height: calc(100dvh - min(calc(100px + 5vw), 100px));
 
     .home__content {
         font-family: var(--titles-font-family);
         // background-color: brown;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         height: 100%;
         gap: 12.5%;
         font-family: var(--titles-font-family);
@@ -117,6 +119,201 @@
                 width: 15px;
                 aspect-ratio: 1;
                 align-self: flex-end;
+            }
+        }
+    }
+}
+
+.preview-container {
+    position: relative;
+    height: 200vh;
+
+    .home-preview__content {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: var(--s-sizing);
+        margin-top: 25vh;
+        padding-block: 1px;
+        // padding-block: min(10vh, 50px);
+        // padding-block: min(10vw, 100px);
+        width: 100%;
+        height: 100vh;
+        // background-color: black; // -> change body .main-content.body-content background color on scroll (because no padding)
+
+        .content__text {
+            position: relative;
+            mix-blend-mode: difference;
+            height: calc(25% - min(10vh, 100px));
+
+            @media screen and (min-width: 1000px) {
+                max-width: 950px;
+                width: 75%;
+            }
+
+            p {
+                color: var(--light-gray);
+                // color: white;
+                font-size: var(--font-size-m);
+
+                span.title {
+                    position: relative;
+                    margin-right: 50px;
+                    // color: #474747;
+                    color: var(--gray);
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 1px;
+                        top: 50%;
+                        right: -37.5px;
+                        background-color: var(--gray);
+                    }
+                }
+            }
+
+            .line-text {
+                width: 50px;
+                height: 1px;
+                background-color: var(--gray);
+            }
+        }
+
+        .content__projects {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: var(--m-sizing);
+            height: calc(75% - min(10vh, 100px));
+
+            img {
+                width: 250px;
+            }
+
+            .top__projects {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h1 {
+                    font-size: var(--font-size-xl);
+                    color: var(--primary-blue);
+                }
+
+                a {
+                    color: white;
+                    position: relative;
+                    text-decoration: none;
+
+                    &::after {
+                        background-color: var(--white);
+                    }
+                }
+            }
+
+            .projects__selected {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                mix-blend-mode: difference;
+                gap: min(20%, 20px);
+                
+                @media screen and (min-width: 1000px) {
+                    flex-direction: row;
+                }
+
+                .projects__current {
+                    position: relative;
+                    overflow: hidden;
+                    
+                    @media screen and (min-width: 1000px) {
+                        align-self: end;
+                    }
+    
+                    p {
+                        color: white;
+                        position: relative;
+                        font-size: var(--font-size-s);
+                        width: 100%;
+                        // transform: translateY(-100%); -> translation here
+
+                        &::after {
+                            content: attr(data-after);
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            transform: translateY(100%);
+                        }
+                    }
+                }
+    
+                .works__image {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    align-self: center;
+                    background-color: red;
+                    // overflow: hidden;
+
+                    @media screen and (min-width: 1000px) {
+                        align-self: flex-end;
+                        width: 100%;
+                        max-width: 750px;
+                    }
+
+                    .mask {
+                        // background-color: rgb(84, 48, 48);
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 111;
+                        cursor: pointer;
+                    }
+
+                    .project {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+
+                        img {
+                            position: absolute;
+                            object-fit: cover;
+                            top: 0;
+                            left: 0;
+                            // left: 50%;
+                            // transform: translateX(-50%);
+                            width: 100%;
+                            height: 100%;
+                            max-width: 750px;
+                            aspect-ratio: 1;
+
+                            @media screen and (min-width: 1000px) {
+                                left: 100%;
+                                transform: translateX(-100%);
+                            }
+
+                            &.--1 {
+                                z-index: 9;
+                            }
+
+                            &.--2 {
+                                z-index: 10;
+                                clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+                                /* --> polygon(0% 0%, 100% 0%, 100% 100%, 0 100%) */
+                            }
+                        }
+                    }
+                }
             }
         }
     }
