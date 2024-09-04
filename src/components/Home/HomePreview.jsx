@@ -4,16 +4,17 @@ import LinkTransition from '../Transition/LinkTransition';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectView } from '../../utils/projectView';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HomePreview = () => {
+    const location = useLocation();
     const navigate = useNavigate();
-    const [secondProject, setSecondProject] = useState(false);
     const refProgress = useRef(null);
 
     useEffect(() => {
+        if (!refProgress || location.pathname !== '/') return;
         const el = document.querySelector('.main-content.body-content');
         ScrollTrigger.create({
             trigger: '.preview-container',
@@ -41,11 +42,29 @@ const HomePreview = () => {
                 trigger: '.home-preview__content',
                 start: 'top -200px',
                 end: 'bottom 10%',
-                // markers: true,
                 scrub: true,
                 onUpdate: (self) => {
                     let progress = self.progress;
-                    refProgress.current.setAttribute('data-scroll-progress', progress);
+                    // refProgress.current.setAttribute('data-scroll-progress', progress);
+                    if (progress >= 0.5 && location.pathname === "/") {
+                        refProgress.current.setAttribute('data-scroll-progress', '50%');
+                        gsap.to('.animated__progress', {
+                            transform: "translateY(-100%)",
+                            stagger: 0.075,
+                            duration: 1.2 / 2,
+                            ease: "Ease.expoInOut"
+                            // duration: 0.6,
+                            // ease: "expo.inOut"
+                        })
+                    } else {
+                        refProgress.current.setAttribute('data-scroll-progress', '0%');
+                        gsap.to('.animated__progress', {
+                            transform: "translateY(0%)",
+                            stagger: 0.075,
+                            duration: 1.2 / 2,
+                            ease: "Ease.expoInOut"
+                        })
+                    }
                     // console.log("progress:", self.progress)
                     // if (progress >= 0.5) {
                     //     setSecondProject(true);
@@ -73,7 +92,8 @@ const HomePreview = () => {
     });
 
     const handleProjectView = (e) => {
-        projectView(e, 5, navigate, false);
+        const id = e.target.getAttribute('data-id');
+        projectView(e, id, navigate, false);
     };
 
     return (
@@ -94,22 +114,42 @@ const HomePreview = () => {
                 </div>
                 <div className="projects__selected">
                     <div className="projects__current">
-                        <p data-after="Flexin">
-                            FreshZea
-                        </p>
+                        <div className="current__infos">
+                            <div className="infos__index">
+                                <p data-after="02" className="animated__progress">
+                                    01
+                                </p>
+                            </div>
+                            <div className="infos__title">
+                                <p data-after="Flexin" className="animated__progress">
+                                    Freshzea
+                                </p>
+                            </div>
+                        </div>
+                        <div className="current__theme">
+                            <p data-after="Agency website" className="animated__progress">
+                                Pizzeria website
+                            </p>
+                        </div>
                     </div>
                     <div className="works__image" onClick={handleProjectView}>
-                        <div className="mask" data-text-cursor="See project" />
+                        {/* <div className="mask" data-text-cursor="View project" /> */}
                         <div className="project">
                             <img
+                                onClick={handleProjectView}
                                 className="--1"
                                 src={process.env.PUBLIC_URL + `/assets/pictures/works/freshzea.png`}
                                 alt="FreshZea's banner"
+                                data-id="6"
+                                data-text-cursor="Freshzea"
                             />
                             <img
+                                onClick={handleProjectView}
                                 className="--2"
                                 src={process.env.PUBLIC_URL + `/assets/pictures/works/flexin.png`}
                                 alt="Flexin's banner"
+                                data-id="2"
+                                data-text-cursor="Flexin"
                             />
                         </div>
                     </div>

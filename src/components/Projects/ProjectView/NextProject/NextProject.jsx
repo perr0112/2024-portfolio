@@ -24,6 +24,7 @@ const NextProject = ({
     })
 
     useEffect(() => {
+        if (!current || !next) return;
         const bottom = window.innerHeight;
         console.log(bottom);
         if (current && next) {
