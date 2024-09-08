@@ -1,25 +1,31 @@
 import './styles/App.scss'
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+
+import Lenis from 'lenis';
+
+// import useWindowDimensions from './hooks/useWindow';
+
+import { ThemeContext } from './contexts/Theme';
 
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Cursor from './components/Cursor/Cursor';
-import Lenis from 'lenis';
 import ProjectView from './components/Projects/ProjectView/ProjectView';
-import useWindowDimensions from './hooks/useWindow';
+import { WindowContext } from './contexts/Window';
+
 
 function App() {
-  const { width } = useWindowDimensions();
+  const { width } = useContext(WindowContext);
 
   const location = useLocation();
-  const [theme, setTheme] = useState('basic');
+  const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis();
 
     lenis.on('scroll', (e) => {
       // console.log(e)
@@ -34,17 +40,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    switch (location.pathname) {
-      case '/':
-      case '/contact':
+    const path = location.pathname.split('/')[1];
+
+    switch (path) {
+      case 'contact':
         setTheme('basic');
         break;
-      case '/projects':
+      case 'projects':
         setTheme('green');
         break;
-      case '/about':
+      case 'about':
         setTheme('blue');
         break;
+      case 'project':
+        setTheme('basic');
       default:
         setTheme('basic');
     }

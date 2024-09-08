@@ -1,7 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
-import { useCallback, useEffect } from 'react';
-import { transition } from '../../utils/transition';
 import LinkTransition from '../Transition/LinkTransition';
 
 const links = [

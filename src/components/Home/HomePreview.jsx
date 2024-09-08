@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import LinkTransition from '../Transition/LinkTransition';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectView } from '../../utils/projectView';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useGSAP } from '@gsap/react';
+import { ThemeContext } from '../../contexts/Theme';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,27 +15,34 @@ const HomePreview = () => {
     const navigate = useNavigate();
     const refProgress = useRef(null);
 
-    useEffect(() => {
+    const { setTheme } = useContext(ThemeContext);
+
+    useGSAP(() => {
         if (!refProgress || location.pathname !== '/') return;
         const el = document.querySelector('.main-content.body-content');
         ScrollTrigger.create({
             trigger: '.preview-container',
-            start: "-5% center",
+            // start: "-5% center",
+            start: "top center",
             end: "100% top",
             toggleActions: 'play reverse play reset',
             duration: 1,
             ease: "Expo.easeInOut",
             onEnter: () => {
-                el.setAttribute('data-theme', 'black')
+                // el.setAttribute('data-theme', 'black')
+                setTheme('black');
             },
             onEnterBack: () => {
-                el.setAttribute('data-theme', 'black')
+                // el.setAttribute('data-theme', 'black')
+                setTheme('black');
             },
             onLeave: () => {
-                el.setAttribute('data-theme', 'basic')
+                // el.setAttribute('data-theme', 'basic')
+                setTheme('basic');
             },
             onLeaveBack: () => {
-                el.setAttribute('data-theme', 'basic')
+                // el.setAttribute('data-theme', 'basic')
+                setTheme('basic');
             },
         });
 
@@ -45,13 +54,12 @@ const HomePreview = () => {
                 scrub: true,
                 onUpdate: (self) => {
                     let progress = self.progress;
-                    // refProgress.current.setAttribute('data-scroll-progress', progress);
                     if (progress >= 0.5 && location.pathname === "/") {
                         refProgress.current.setAttribute('data-scroll-progress', '50%');
                         gsap.to('.animated__progress', {
                             transform: "translateY(-100%)",
                             stagger: 0.075,
-                            duration: 1.2 / 2,
+                            duration: 1.2 / 1.75,
                             ease: "Ease.expoInOut"
                             // duration: 0.6,
                             // ease: "expo.inOut"
@@ -61,19 +69,13 @@ const HomePreview = () => {
                         gsap.to('.animated__progress', {
                             transform: "translateY(0%)",
                             stagger: 0.075,
-                            duration: 1.2 / 2,
+                            duration: 1.2 / 1.75,
                             ease: "Ease.expoInOut"
                         })
                     }
-                    // console.log("progress:", self.progress)
-                    // if (progress >= 0.5) {
-                    //     setSecondProject(true);
-                    // } else {
-                    //     setSecondProject(false);
-                    // }
                 },
             }
-        })
+        }, { scope: refProgress.current });
     
         tl.fromTo('.--2',{
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -98,7 +100,7 @@ const HomePreview = () => {
 
     return (
         <div className="home-preview__content" ref={refProgress} data-scroll-progress="0">
-            <div className="content__text">
+            <div className="content__text" data-target="false">
                 <p>
                     <span className="title">Preview</span>
                     Although some projects are fictitious, I put <span className="primary-keyword">everything</span> in order so that I can come up with something I'm proud of. My inspiration comes naturally,
@@ -106,14 +108,14 @@ const HomePreview = () => {
                 </p>
             </div>
             <div className="content__projects">
-                <div className="top__projects">
+                <div className="top__projects" data-target="false">
                     <h1>Random projects</h1>
                     <LinkTransition className="link-right-line" href="/projects" title="Projects">
                         See all projects
                     </LinkTransition>
                 </div>
                 <div className="projects__selected">
-                    <div className="projects__current">
+                    <div className="projects__current" data-target="false">
                         <div className="current__infos">
                             <div className="infos__index">
                                 <p data-after="02" className="animated__progress">
@@ -142,6 +144,7 @@ const HomePreview = () => {
                                 alt="FreshZea's banner"
                                 data-id="6"
                                 data-text-cursor="Freshzea"
+                                data-target="false"
                             />
                             <img
                                 onClick={handleProjectView}
@@ -150,6 +153,7 @@ const HomePreview = () => {
                                 alt="Flexin's banner"
                                 data-id="2"
                                 data-text-cursor="Flexin"
+                                data-target="false"
                             />
                         </div>
                     </div>

@@ -75,6 +75,7 @@ const ProjectView = () => {
                     {Array(currentProject.images).fill().map((index, i) =>
                         // <p>img {i}</p>
                         <AnimatedImg
+                            key={index}
                         // <img
                             src={process.env.PUBLIC_URL + `/assets/pictures/workview/${currentProject.banner}/preview-${i + 1}.png`}
                             alt={`${i+1}'s preview`}

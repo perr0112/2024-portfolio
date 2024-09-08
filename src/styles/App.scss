@@ -154,6 +154,7 @@ a.link-line {
             transition: all .35s ease-in-out;
         }
         
+        
         &:hover::after {
             transform: scaleX(100%);
         }
@@ -174,8 +175,11 @@ a.link-right-line {
         transition: all .35s ease-in-out;
     }
 
-    &:hover::after {
-        transform: scaleX(0%);
+
+    @media screen and (min-width: 1000px) {    
+        &:hover::after {
+            transform: scaleX(0%);
+        }
     }
 }
 

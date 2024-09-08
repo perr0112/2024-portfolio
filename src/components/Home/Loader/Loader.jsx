@@ -7,12 +7,13 @@ import bymax from './assets/pictures/pre_loader/bymax.png';
 import flexin from './assets/pictures/pre_loader/flexin.png';
 import freshzea from './assets/pictures/pre_loader/fresh-zea.png';
 import { useLocation } from 'react-router-dom';
+import { useGSAP } from '@gsap/react';
 
 const Loader = () => {
 
     const { pathname } = useLocation();
 
-    useEffect(() => {
+    useGSAP(() => {
         if (pathname !== '/') { return; }
         const durationDefault = 1.2;
         const tl = gsap.timeline();

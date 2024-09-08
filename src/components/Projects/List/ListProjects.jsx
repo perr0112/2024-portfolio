@@ -34,14 +34,9 @@ const ListProjects = () => {
         }
     }, [selectedTags]);
     
-    useEffect(() => {
-        console.log(selectedTags);
-    }, [selectedTags])
-    
     const [typeShow, setTypeShow] = useState('Minimap');
 
     const handleTypeShow = useCallback((e) => {
-        console.log(e);
         setTypeShow(e);
     });
 

@@ -10,6 +10,8 @@ export function projectView(
     fromProject,
 ) {
 
+    console.log('e============', event, href, navigate, fromProject);
+
     // console.log('projectview', href, event, navigate, fromProject);
 
     const tl = gsap.timeline({
@@ -20,7 +22,10 @@ export function projectView(
     })
 
     const currentProject = fromProject ? event : event.target.offsetParent;
+
     const imgCurrentProject = currentProject.querySelector('img');
+    
+    console.log('currentProject', currentProject, 'imgCurrentProject', imgCurrentProject);
     const imgRect = imgCurrentProject.getBoundingClientRect();
 
     currentProject.setAttribute('data-target', 'true'); 
@@ -32,6 +37,7 @@ export function projectView(
                 opacity: 0,
                 pointerEvents: 'none',
                 duration: fromProject ? 0 : DURATION_TRANSITION - 0.15,
+                // duration: DURATION_TRANSITION - 0.15,
                 ease: 'Expo.easeInOut',
             })
         })
