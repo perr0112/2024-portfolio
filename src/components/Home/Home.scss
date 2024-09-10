@@ -129,7 +129,8 @@
         justify-content: space-evenly;
         gap: var(--s-sizing);
         margin-top: 25vh;
-        padding-block: 1px;
+        padding-top: min(calc(100px + 5vw), 100px);
+        // padding-block: 1px;
         // padding-block: min(10vh, 50px);
         // padding-block: min(10vw, 100px);
         width: 100%;
