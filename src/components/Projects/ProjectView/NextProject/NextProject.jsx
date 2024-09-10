@@ -2,14 +2,16 @@ import './NextProject.scss';
 
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { projectView } from '../../../../utils/projectView';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { WindowContext } from '../../../../contexts/Window';
+
+import useBottomScroll from '../../../../hooks/useBottomScroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +20,7 @@ const NextProject = ({
     next
 }) => {
     const { width } = useContext(WindowContext);
+    const isScrollBottom = useBottomScroll();
 
     const navigate = useNavigate();
     const nextProject = useRef();
@@ -57,16 +60,8 @@ const NextProject = ({
                     onCompleteParams: [],
                     onComplete: () => {
                         console.log('completed')
-                        // if () {
-                        // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                        // }
-                        // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                        //     console.log('completed');
-                        //     // projectView(nextProject.current, `/project/${nextId}`, navigate, true);
-                        //     console.log('current: =============', nextProject.current);
-                        //     projectView(nextProject.current, nextId, navigate, true);
-                        // }
-                        if ((nextProject.current) && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+                        // if ((nextProject.current) && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+                        if (isScrollBottom) {
                             console.log('completed');
                             projectView(nextProject.current, nextId, navigate, true);
                         } else {
