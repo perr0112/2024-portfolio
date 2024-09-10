@@ -6,7 +6,8 @@ export function transition(
     href = '/',
     bodyClass = 'is-transitioning',
     navigate,
-    title
+    title,
+    onCompleteCallback
 ) {
 
     const tl = gsap.timeline({
@@ -47,6 +48,10 @@ export function transition(
         y: '-100dvh',
         onComplete: () => {
             body.classList.remove('transitioning');
+            if (typeof onCompleteCallback === 'function') {
+                console.log('done')
+                onCompleteCallback();
+            }
         }
     }, '-=1')
 

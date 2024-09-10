@@ -97,7 +97,9 @@ const Loader = () => {
             pointerEvents: 'auto'
         })
 
-        tl.to('.home-container', {
+        tl.fromTo('.home-container', {
+            opacity: 0,
+        }, {
             opacity: 1,
             duration: durationDefault,
             ease: 'Expo.easeInOut',

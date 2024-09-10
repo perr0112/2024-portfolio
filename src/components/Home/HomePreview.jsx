@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import LinkTransition from '../Transition/LinkTransition';
 
 import gsap from 'gsap';
@@ -7,6 +7,7 @@ import { projectView } from '../../utils/projectView';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useGSAP } from '@gsap/react';
 import { ThemeContext } from '../../contexts/Theme';
+import { ANIMATION_PROJECTS } from '../../animations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,6 +99,18 @@ const HomePreview = () => {
         projectView(e, id, navigate, false);
     };
 
+    // const projectAnimation = useCallback(() => {
+    //     gsap.fromTo('.line-projects', {
+    //         width: '0%',
+    //         duration: 1.2,
+    //         ease: "elastic.out",
+    //     }, {
+    //         width: 'calc(100% - 2rem)',
+    //         duration: 1.2,
+    //         ease: "elastic.out",
+    //     });
+    // }, []);
+
     return (
         <div className="home-preview__content" ref={refProgress} data-scroll-progress="0">
             <div className="content__text" data-target="false">
@@ -110,7 +123,7 @@ const HomePreview = () => {
             <div className="content__projects">
                 <div className="top__projects" data-target="false">
                     <h1>Random projects</h1>
-                    <LinkTransition className="link-right-line" href="/projects" title="Projects">
+                    <LinkTransition className="link-right-line" href="/projects" title="Projects" callback={ANIMATION_PROJECTS}>
                         See all projects
                     </LinkTransition>
                 </div>

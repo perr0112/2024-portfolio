@@ -1,3 +1,13 @@
+.scroll-down-mobile {
+    position: absolute;
+    z-index: 100000;
+    left: 1rem;
+    bottom: 1rem;
+    font-size: var(--font-size-xs);
+    mix-blend-mode: difference;
+    color: white;
+}
+
 .project-view {
     position: absolute;
     top: 0;
@@ -25,7 +35,7 @@
     width: calc(100vw - 2rem);
     margin-inline: auto;
     height: max-content;
-    margin-top: calc(100vh - min(calc(100px + 10vw), 200px));
+    margin-top: calc(100vh - min(calc(100px + 5vw), 200px));
     padding-block: 3rem;
     // word-break: break-all;
 
@@ -113,9 +123,9 @@
         gap: var(--l-sizing);
 
         img {
-            width: 75vw;
+            width: 100%;
             max-width: 850px;
-            aspect-ratio: 1620 / 1080;
+            // aspect-ratio: 1920 / 1080;
         }
     }
 }

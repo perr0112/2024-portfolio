@@ -42,8 +42,6 @@ const About = () => {
 
     return (
         <div className="about-container">
-            <h1>A REFAIRE : ça ne doit pas prendre le "milieu" mais être un peu flottant (à droite, à gauche)</h1>
-            <h1>A modif : projetview qui prend pas tout l'écran (?) + le margin qui est bugué sur le titre</h1>
             <div className="about__description">
                 {/* <div className="about-mask" data-text-cursor="Scroll for more" /> */}
                 <div className="description__icon">
@@ -55,7 +53,8 @@ const About = () => {
             </div>
 
             <div className="about__experiences">
-                <h1>Experiences</h1>
+                {/* <h1>Experiences</h1> */}
+                <Linemask phrases={["Experiences"]} className="title-page" />
 
                 <div className="experiences__list">
                     <ul>

@@ -4,9 +4,9 @@
 
     @media screen and (min-width: 1000px) {
         // padding: min(10vw, 10px);
-        padding: 20px;
-        background-color: var(--pretty-light-gray);
-        border-radius: 20px;
+        // padding: 20px;
+        // background-color: var(--pretty-light-gray);
+        // border-radius: 20px;
     }
 
     img.clip-path {
@@ -14,11 +14,11 @@
         display: block;
         margin: auto;
         width: 75%;
-        aspect-ratio: 1920 / 1080;
+        // aspect-ratio: 1920 / 1080;
 
         @media screen and (min-width: 1000px) {
             // border-radius: calc(5px +  min(20vw, 25px));
-            border-radius: 10px;
+            // border-radius: 10px;
         }
     }
 }

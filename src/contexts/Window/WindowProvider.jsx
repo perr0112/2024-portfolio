@@ -17,8 +17,6 @@ const WindowProvider = ({ children }) => {
       function handleResize() {
         setWindowDimensions(getWindowDimensions());
       }
-
-      console.log('==', windowDimensions);
   
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);

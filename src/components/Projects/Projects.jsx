@@ -1,8 +1,15 @@
-import ListProjects from './List/ListProjects';
+import { useGSAP } from '@gsap/react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
 import { Linemask } from '../commons/';
 
-import './Projects.scss';
+import ListProjects from './List/ListProjects';
+
 import { LENGTHPROJECTS } from '../../data/projects';
+
+import './Projects.scss';
+import { ANIMATION_PROJECTS } from '../../animations';
 
 const phrases = [
     "Discover this selection of work, i have done in my spare time, as a freelancer or during my studies.",
@@ -10,6 +17,10 @@ const phrases = [
 ];
 
 const Projects = () => {
+
+    useEffect(() => {
+        ANIMATION_PROJECTS();
+    }, []);
 
     return (
         <div className="projects-container">
@@ -23,10 +34,22 @@ const Projects = () => {
                     <Linemask className="basic-size" phrases={phrases} />
                 </div>
 
-                <div className="line container__bottom" />
             </div>
 
             <ListProjects />
+
+            BLABLABLA
+            <br />
+            VIVE JACKIE
+            <br />
+            BLABLABLA
+            <br />
+            BLABLABLA
+            <br />
+            BLABLABLA
+            <br />
+            BLABLABLA
+            <br />
         </div>
     )
 }

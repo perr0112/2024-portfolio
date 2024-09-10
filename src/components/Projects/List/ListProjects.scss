@@ -10,6 +10,8 @@
         padding: var(--xs-sizing) 0;
 
         .type {
+            transform: translateY(20px);
+            opacity: 0;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -91,6 +93,7 @@
         gap: var(--s-sizing);
 
         .line-projects {
+            // width: 0%;
             background-color: var(--primary-green);
             height: 2px;
         }
@@ -129,7 +132,7 @@
                 max-width: 100%;
                 width: 100%;
                 height: 100%;
-                scale: 1.1;
+                // scale: 1.1;
                 object-fit: cover;
                 transition: scale var(--transition-cubic);
             }

@@ -15,8 +15,6 @@ const Home = () => {
 
     const mouseMove = (e) => {
         const eyes = document.querySelectorAll('.pupille-wrapper');
-    
-        // Obtenez la position du curseur
         const mouseX = e.clientX;
         const mouseY = e.clientY;
     
@@ -51,7 +49,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* <Loader /> */}
+            <Loader />
             <div className="home-container">
                 <div className="home__content">
 

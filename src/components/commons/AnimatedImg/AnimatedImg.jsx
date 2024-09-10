@@ -3,7 +3,7 @@ import './AnimatedImg.scss';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const AnimatedImg = ({ src, alt }) => {
+const AnimatedImg = ({ src, alt, background }) => {
     const animation = {
         // initial: { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' },
         initial: { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)', scale: 1.2 },
@@ -19,7 +19,7 @@ const AnimatedImg = ({ src, alt }) => {
     });
 
     return (
-        <div className="image-animated" ref={ref}>
+        <div className="image-animated" ref={ref} data-background={background}>
             <motion.img
                 className="clip-path"
                 src={src}

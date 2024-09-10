@@ -1,6 +1,6 @@
 import './ProjectView.scss';
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import NextProject from './NextProject/NextProject';
@@ -8,6 +8,7 @@ import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
 
 import { getCurrentProject, getNextProject } from "../../../utils/projects";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { WindowContext } from '../../../contexts/Window';
 
 const phrases = [
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
@@ -17,6 +18,8 @@ const phrases = [
 
 const ProjectView = () => {
     const params = useParams();
+
+    const { width } = useContext(WindowContext);
 
     const [currentProject, setCurrentProject] = useState({});
     const [nextProject, setNextProject] = useState({});
@@ -35,12 +38,12 @@ const ProjectView = () => {
             <div className="project-view" data-target="false">
                 <LazyLoadImage
                     className="banner"
-                    data-text-cursor="Scroll"
+                    data-text-cursor="Scroll down"
                     src={process.env.PUBLIC_URL + `/assets/pictures/works/${currentProject.banner}.png`}
                     alt={`${currentProject.name} banner`}
                 />
 
-                <div className="scroll-down-mobile">Scroll down</div>
+                {width < 1024 && <div className="scroll-down-mobile">Scroll down</div>}
             </div>
 
             <div className="project-content" data-target="false">
