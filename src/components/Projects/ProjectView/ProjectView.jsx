@@ -67,6 +67,7 @@ const ProjectView = () => {
 
                             <ButtonLink
                                 classNames="mbc-m"
+                                href={currentProject.url}
                             >
                                 View project
                             </ButtonLink>

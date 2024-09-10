@@ -5,7 +5,8 @@ const projects = [
         date: 2021,
         banner: "stream_it",
         tags: ["UI, UX", "Design"],
-        images: 1
+        images: 1,
+        url: ""
     },
     {
         id: 2,
@@ -14,6 +15,7 @@ const projects = [
         banner: "flexin",
         tags: ["Development", "UI, UX", "Design"],
         images: 3,
+        url: "https://perr0112.github.io/agency-website/"
     },
     // {
     //     id: 2,
@@ -28,21 +30,26 @@ const projects = [
         date: 2024,
         banner: "bymax_portfolio",
         tags: ["Development", "UI, UX", "Design"],
-        images: 4
+        images: 4,
+        url: "https://perr0112.github.io/maxime-portfolio/"
     },
     {
         id: 4,
         name: "WildWonderHub",
         date: 2024,
         banner: "wildwonderhub",
-        tags: ["Development", "UI, UX", "Design"]
+        tags: ["Development", "UI, UX", "Design"],
+        images: 3,
+        url: ""
     },
     {
         id: 5,
         name: "Qualitum",
         date: 2024,
         banner: "qualitum",
-        tags: ["Development", "UI, UX", "Design"]
+        tags: ["Development", "UI, UX", "Design"],
+        images: 7,
+        url: "https://qualitum-pink.vercel.app/"
     },
     {
         id: 6,
@@ -50,7 +57,8 @@ const projects = [
         date: 2024,
         banner: "freshzea",
         tags: ["Development", "UI, UX", "Design"],
-        images: 5
+        images: 5,
+        url: "https://freshzea.vercel.app/"
     },
 ];
 

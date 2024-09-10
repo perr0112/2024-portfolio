@@ -7,7 +7,7 @@ const Button = ({
     classNames
 }) => {
     return (
-        <a className={`btn primary ${classNames}`} style={styles} href={href || '#'}>
+        <a className={`btn primary ${classNames}`} target="_blank" style={styles} href={href || '#'}>
             <p className="link-animated">
                 <span data-text={children}>
                     {children}
