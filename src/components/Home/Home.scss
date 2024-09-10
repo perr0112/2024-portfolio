@@ -1,5 +1,12 @@
 @import '../../styles/variables.scss';
 
+body .main-content.body-content[data-theme="basic-noscroll"] {
+
+    .home-container, .preview-container {
+        display: none;
+    }
+}
+
 .home-container {
     position: relative;
     // opacity: 0;

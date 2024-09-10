@@ -1,6 +1,5 @@
 import './Loader.scss'
 
-import { useEffect } from 'react';
 import gsap from 'gsap';
 
 import bymax from './assets/pictures/pre_loader/bymax.png';
@@ -8,10 +7,13 @@ import flexin from './assets/pictures/pre_loader/flexin.png';
 import freshzea from './assets/pictures/pre_loader/fresh-zea.png';
 import { useLocation } from 'react-router-dom';
 import { useGSAP } from '@gsap/react';
+import { useContext } from 'react';
+import { ThemeContext } from '../../../contexts/Theme';
 
 const Loader = () => {
 
     const { pathname } = useLocation();
+    const { setTheme } = useContext(ThemeContext);
 
     useGSAP(() => {
         if (pathname !== '/') { return; }
@@ -28,7 +30,10 @@ const Loader = () => {
             transform: 'translateY(0%)',
             ease: 'Expo.easeInOut',
             duration: durationDefault + .5,
-            stagger: .15
+            stagger: .15,
+            onStart: () => {
+                setTheme('basic-noscroll');
+            }
         })
 
         tl.to('.img', {
@@ -79,12 +84,6 @@ const Loader = () => {
             transform: 'translateY(0%)'
         }, `+=${durationDefault}`)
 
-        // tl.to('.line', {
-        //     transform: 'scaleX(100%)',
-        //     duration: durationDefault,
-        //     ease: 'Expo.easeInOut',
-        // }, `+=${durationDefault - 1}`)
-
         tl.to('nav.header', {
             transform: 'translateY(0px)',
             duration: durationDefault,
@@ -99,10 +98,14 @@ const Loader = () => {
 
         tl.fromTo('.home-container', {
             opacity: 0,
+            pointerEvents: 'none'
         }, {
             opacity: 1,
             duration: durationDefault,
             ease: 'Expo.easeInOut',
+            onComplete: () => {
+                setTheme('basic');
+            }
         })
         // }, `-=${durationDefault - (0.5 + 0.15)}`)
     });
