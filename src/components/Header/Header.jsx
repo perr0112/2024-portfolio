@@ -1,11 +1,12 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import LinkTransition from '../Transition/LinkTransition';
+import { ANIMATION_PROJECTS } from '../../animations';
 
 const links = [
-    { to: '/about', text: 'About' },
-    { to: '/projects', text: 'Projects' },
-    { to: '/contact', text: 'Contact' },
+    { to: '/about', text: 'About', onComplete: '' },
+    { to: '/projects', text: 'Projects', onComplete: ANIMATION_PROJECTS },
+    { to: '/contact', text: 'Contact', onComplete: '' },
 ]
 
 const Header = ({
@@ -37,7 +38,7 @@ const Header = ({
                     {links.map((link, index) => {
                         return (
                             <li key={index}>
-                                <LinkTransition className={"link-line header"} href={link.to} title={link.text} />
+                                <LinkTransition className={"link-line header"} href={link.to} title={link.text} callback={link.onComplete} />
                             </li>
                         )
                     })}
