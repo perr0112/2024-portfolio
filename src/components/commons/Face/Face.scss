@@ -82,12 +82,12 @@
             // background-color: white;
             // position: absolute;
 
-            &.--1 {
+            &.v-1 {
                 position: absolute;
-                // background-color: orange;
                 width: 8%;
                 top: 70%;
                 left: 20%;
+                z-index: 999999;
 
                 svg {
                     width: 100%;
@@ -95,12 +95,12 @@
                 }
             }
 
-            &.--2 {
+            &.v-2 {
                 position: absolute;
-                // background-color: rebeccapurple;
                 width: 12%;
                 top: 60%;
                 left: 10%;
+                z-index: 999999;
 
                 svg {
                     width: 100%;

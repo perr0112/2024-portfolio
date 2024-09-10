@@ -31,10 +31,10 @@ const Face = () => {
                 </div>
 
                 <div className="stars">
-                    <div className="st --1">
+                    <div className="st v-1">
                         <Star />
                     </div>
-                    <div className="st --2">
+                    <div className="st v-2">
                         <Star />
                     </div>
                 </div>
