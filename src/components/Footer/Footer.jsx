@@ -16,7 +16,6 @@ const Footer = () => {
     const { width } = useContext(WindowContext);
 
     useEffect(() => {
-        console.log(pathname);
         pathname === "/" ? setBackgroundFooter('white') : setBackgroundFooter('black');
     }, [pathname]);
 
@@ -25,11 +24,11 @@ const Footer = () => {
             <div className="footer__content">
                 <div className="content__infos">
                     <div className="infos__networks">
-                        {networks.map((network) => <a target="_blank" href={network.href}>{network.target}</a>)}
+                        {networks.map((network, i) => <a key={i} target="_blank" href={network.href}>{network.target}</a>)}
                     </div>
                     <div className="infos__portfolio">
-                        {links_portfolio.map((link) =>
-                            <div className="portfolio__link">
+                        {links_portfolio.map((link, i) =>
+                            <div className="portfolio__link" key={i}>
                                 <div className="link__circle" style={{ backgroundColor: link.color }} />
                                 <LinkTransition href={link.href} title={link.target} callback={link.callback} />
                             </div>
