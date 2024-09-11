@@ -37,19 +37,6 @@ const Projects = () => {
             </div>
 
             <ListProjects />
-
-            BLABLABLA
-            <br />
-            VIVE JACKIE
-            <br />
-            BLABLABLA
-            <br />
-            BLABLABLA
-            <br />
-            BLABLABLA
-            <br />
-            BLABLABLA
-            <br />
         </div>
     )
 }

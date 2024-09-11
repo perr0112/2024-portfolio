@@ -1,13 +1,12 @@
 import './styles/App.scss'
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Lenis from 'lenis';
 
-// import useWindowDimensions from './hooks/useWindow';
-
 import { ThemeContext } from './contexts/Theme';
+import { WindowContext } from './contexts/Window';
 
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
@@ -15,7 +14,7 @@ import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Cursor from './components/Cursor/Cursor';
 import ProjectView from './components/Projects/ProjectView/ProjectView';
-import { WindowContext } from './contexts/Window';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -23,6 +22,8 @@ function App() {
 
   const location = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
+
+  const [inProjectView, setInProjectView] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -41,26 +42,34 @@ function App() {
 
   useEffect(() => {
     const path = location.pathname.split('/')[1];
-
+  
     switch (path) {
       case 'contact':
         setTheme('basic');
+        setInProjectView(false);
         break;
       case 'projects':
         setTheme('green');
+        setInProjectView(false);
         break;
       case 'about':
         setTheme('blue');
+        setInProjectView(false);
         break;
       case 'project':
         setTheme('basic');
+        setInProjectView(true);
+        break;
       default:
         setTheme('basic');
+        setInProjectView(false);
+        break;
     }
-  }, [location.pathname]);
+  }, [location.pathname]);  
 
   return (
     <>
+      {/* <p style={{position: "fixed"}}>BUG DES CARDS A RESOUDRE lorsque l'animation est lancée et le type de présentation est cards</p> */}
       {width > 1024 && <Cursor />}
       <div className="transition" data-text-cursor="Loading">
         <div className="linemask">
@@ -79,7 +88,9 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/:id" element={<ProjectView />} />
         </Routes>
+
       </div>
+      {!inProjectView && <Footer />}
     </>
   );
 }
