@@ -10,6 +10,11 @@ import { useGSAP } from '@gsap/react';
 import { useContext } from 'react';
 import { ThemeContext } from '../../../contexts/Theme';
 
+/* TODO : couleurs puis noir sur titre (transition, animation) */
+const colors = [
+    "#7AB67D", "#009c9c", "#FAFF00", "#000000"
+];
+
 const Loader = () => {
 
     const { pathname } = useLocation();
@@ -95,6 +100,8 @@ const Loader = () => {
         tl.set('nav.header', {
             pointerEvents: 'auto'
         })
+
+        /* here */
 
         tl.fromTo('.home-container', {
             opacity: 0,
