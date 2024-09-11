@@ -49,7 +49,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* <Loader /> */}
+            <Loader />
             <div className="home-container">
                 <div className="home__content">
 
