@@ -86,7 +86,7 @@ const Contact = () => {
 
                     <div className="form__data">
                         <div className="data__main">
-                            <Linemask className="small-title" phrases={["Write your mail"]} />
+                            <Linemask className="small-title" phrases={["Write your e-mail"]} />
                             <div className="main__info">
                                 <p>Hello Clement, my name is</p>
                                 <input
