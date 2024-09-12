@@ -11,10 +11,6 @@ const ProjectItem = ({ data }) => {
         projectView(e, data.id, navigate, false);
     };
 
-    /* TODO : ne pas prendre toute la taille de l'écran, mais comme ici :
-                   https://lefruitstudio.fr/works/artcurial-campaign-2023
-    */
-
     return (
         <div
             className="project-item"

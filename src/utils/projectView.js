@@ -66,7 +66,7 @@ export function projectView(
     }, '>').to(imgCurrentProject, {
         scale: 1,
         width: '100vw',
-        height: '100dvh',
+        height: '100vh',
         top: 0,
         left: 0,
         right: 0,

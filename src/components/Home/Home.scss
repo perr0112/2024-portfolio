@@ -14,7 +14,7 @@ body .main-content.body-content[data-theme="basic-noscroll"] {
     // height: calc(100dvh - 15dvh);
     // height: calc(100dvh - min(calc(100px + 10vw), 200px));
     // height: calc(100dvh - min(calc(100px + 10vw), 150px));
-    height: calc(100dvh - min(calc(100px + 5vw), 100px));
+    height: calc(100vh - min(calc(100px + 5vw), 100px));
 
     .home__content {
         font-family: var(--titles-font-family);
@@ -127,6 +127,8 @@ body .main-content.body-content[data-theme="basic-noscroll"] {
 .preview-container {
     position: relative;
     height: 200vh;
+    margin-inline: auto;
+    max-width: 1400px;
 
     .home-preview__content {
         position: sticky;
