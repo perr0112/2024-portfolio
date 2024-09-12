@@ -13,8 +13,8 @@ export const ANIMATION_CONTACT = () => {
     tl.fromTo('p.title span', {
         rotate: "0deg"
     }, {
-        rotate: "180deg",
-        duration: 1.2
+        rotate: "240deg",
+        duration: 1.6
     })
     // }, '-=1')
 
@@ -29,6 +29,7 @@ export const ANIMATION_CONTACT = () => {
         tl.to(path, {
             opacity: 1,
             strokeDashoffset: 0,
-        }, 0.15);
+            duration: 1.6
+        }, 0.25);
     });
 };
