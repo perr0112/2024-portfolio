@@ -15,6 +15,7 @@ import Projects from './components/Projects/Projects';
 import Cursor from './components/Cursor/Cursor';
 import ProjectView from './components/Projects/ProjectView/ProjectView';
 import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact';
 
 
 function App() {
@@ -69,7 +70,6 @@ function App() {
 
   return (
     <>
-      {/* <p style={{position: "fixed"}}>BUG DES CARDS A RESOUDRE lorsque l'animation est lancée et le type de présentation est cards</p> */}
       {width > 1024 && <Cursor />}
       <div className="transition" data-text-cursor="Loading">
         <div className="linemask">
@@ -87,6 +87,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/:id" element={<ProjectView />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
       </div>

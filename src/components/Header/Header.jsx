@@ -1,12 +1,16 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 import './Header.scss';
+
 import LinkTransition from '../Transition/LinkTransition';
+
 import { ANIMATION_PROJECTS } from '../../animations';
+import { ANIMATION_CONTACT } from '../../animations/';
 
 const links = [
     { to: '/about', text: 'About', onComplete: '' },
     { to: '/projects', text: 'Projects', onComplete: ANIMATION_PROJECTS },
-    { to: '/contact', text: 'Contact', onComplete: '' },
+    { to: '/contact', text: 'Contact', onComplete: ANIMATION_CONTACT },
 ]
 
 const Header = ({
