@@ -63,7 +63,7 @@ const Contact = () => {
 
     useEffect(() => {
         ANIMATION_CONTACT();
-    });
+    }, []);
 
     return (
         <div className="contact-container">
@@ -101,7 +101,7 @@ const Contact = () => {
                             </div>
 
                             <div className="main__info">
-                                <p>I'd like to talk to you about</p>
+                                <p>and I'd like to talk to you about</p>
                                 <div className="talk__type">
                                     <div className={`type ${requestType === 'Opportunity' ? 'selected' : ''}`} onClick={() => handleTypeClick('Opportunity')}>
                                         Professional opportunity
@@ -117,7 +117,7 @@ const Contact = () => {
                             </div>
 
                             <div className="main__info">
-                                <p>So please, get back to me at this address</p>
+                                <p>so please, get back to me at this address</p>
                                 <input
                                     placeholder="john.doe@gmail.com"
                                     type="text"

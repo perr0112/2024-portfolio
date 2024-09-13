@@ -4,7 +4,7 @@ export const ANIMATION_CONTACT = () => {
     const tl = gsap.timeline({
         defaults: {
             duration: 1.2,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
         }
     });
 
