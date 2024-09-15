@@ -97,6 +97,10 @@ html.lenis, html.lenis body {
 //     visibility: hidden;
 // }
 
+body.transitioning {
+    overflow: hidden;
+}
+
 body.transitioning .main-content > * {
     display: none;
     // opacity: 0;

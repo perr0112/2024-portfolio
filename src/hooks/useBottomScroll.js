@@ -10,7 +10,6 @@ const useBottomScroll = () => {
       const scrollTop = document.documentElement.scrollTop;
 
       const hasReachedBottom = offsetHeight - (innerHeight + scrollTop) <= 10;
-      console.log(offsetHeight, innerHeight, scrollTop, hasReachedBottom);
 
       setReachedBottom(hasReachedBottom);
     };

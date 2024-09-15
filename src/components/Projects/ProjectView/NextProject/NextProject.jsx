@@ -1,17 +1,17 @@
 import './NextProject.scss';
 
+import gsap from 'gsap';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import gsap from 'gsap';
+import useBottomScroll from '../../../../hooks/useBottomScroll';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { projectView } from '../../../../utils/projectView';
 
 import { WindowContext } from '../../../../contexts/Window';
+import { useGSAP } from '@gsap/react';
 
-import useBottomScroll from '../../../../hooks/useBottomScroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +25,9 @@ const NextProject = ({
     const navigate = useNavigate();
     const nextProject = useRef();
     const imgNextProject = useRef();
-    const lineScaleRef = useRef();
+    const lineScaleRef = useRef(null);
+
+    const container = useRef(null);
 
     const [nextId, setNextId] = useState(null);
 
@@ -35,89 +37,61 @@ const NextProject = ({
     }, [next]);
 
     useEffect(() => {
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 1000);
+    }, [nextId, current, next]);
+
+    useGSAP(() => {
         if (!current || !next || !nextId) return;
-            const bottom = window.innerHeight;
-            if (current && next) {
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: '.next-project-container',
-                        start: "top top",
-                        end: "bottom bottom",
-                        scrub: true,
-                        // markers: true,
-                    }
-                });
 
-                tl.fromTo(lineScaleRef.current, {
-                    transform: 'scaleX(0)'
-                }, {
-                    transform: 'scaleX(1)',
-                    // duration: 1.2,
-                    // ease: "Expo.easeInOut",
-                    onStart: () => {
-                        console.log('started')
-                    },
-                    onCompleteParams: [],
-                    onComplete: () => {
-                        console.log('completed')
-                        // if ((nextProject.current) && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
-                        if (isScrollBottom) {
-                            console.log('completed');
-                            projectView(nextProject.current, nextId, navigate, true);
-                        } else {
-                            console.log('/============ /============ problem to fix');
-                            console.log('???????????????',
-                                nextProject, nextProject.current,
-                                window.innerHeight + window.scrollY >= document.body.offsetHeight,
-                                window.innerHeight, window.scrollY, document.body.offsetHeight
-                            );
-                        }
-                    }
-                });
+        const bottom = window.innerHeight;
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top center",
+                end: "bottom bottom",
+                scrub: true,
+                invalidateOnRefresh: true,
+            }
+        });
 
-                /*tl.fromTo(imgNextProject, {
-                    scale: 0.5,
-                    // filter: 'blur(5px)'
-                }, {
-                    scale: 1,
-                    // filter: 'blur(0px)',
-                    onComplete: () => {
-                        // if () {
-                        // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                        // }
-                        // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                        //     console.log('completed');
-                        //     // projectView(nextProject.current, `/project/${nextId}`, navigate, true);
-                        //     console.log('current: =============', nextProject.current);
-                        //     projectView(nextProject.current, nextId, navigate, true);
-                        // }
-                        if ((nextProject.current) && window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                            console.log('completed');
-                            projectView(nextProject.current, nextId, navigate, true);
-                        } else {
-                            console.log('/============ /============ problem to fix');
-                            // console.log('???????????????',
-                            //     nextProject, nextProject.current,
-                            //     window.innerHeight + window.scrollY >= document.body.offsetHeight,
-                            //     window.innerHeight, window.scrollY, document.body.offsetHeight
-                            // );
-                        }
-                    }
-                }, '<')*/
-        }
-    })
-    // }, [navigate, current, next, nextId]);
+        tl.fromTo(lineScaleRef.current, {
+            transform: 'scaleX(0)'
+        }, {
+            transform: 'scaleX(1)',
+            onComplete: () => {
+                console.log('completed');
+                // projectView(nextProject.current, nextId, navigate, true);
+                // if (isScrollBottom) {
+                    console.log('completed');
+                    projectView(nextProject.current, nextId, navigate, true);
+                // } else {
+                //     console.log('/============ /============ problem to fix');
+                //     console.log('???????????????',
+                //         nextProject, nextProject.current,
+                //         window.innerHeight + window.scrollY >= document.body.offsetHeight,
+                //         window.innerHeight, window.scrollY, document.body.offsetHeight
+                //     );
+                // }
+            }
+        });
+    }, {
+        dependencies:
+        [nextId, nextProject],
+        scope: nextProject
+    });
 
     if (!current || !next || !nextProject) {
         return null;
     }
 
-    const handleProjectView = (e) => {
-        projectView(e, nextId, navigate, false);
+    const handleProjectView = () => {
+        projectView(nextProject.current, nextId, navigate, true);
     };
 
     return (
-        <div data-nextid={next.id} className="next-project-container">
+        <div data-nextid={next.id} ref={container} className="next-project-container">
 
             <div className="sticky-section" ref={nextProject}>
 

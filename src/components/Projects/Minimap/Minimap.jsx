@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { projectView } from "../../../utils/projectView";
 import { useNavigate } from "react-router-dom";
+import { useGSAP } from '@gsap/react';
 
 const ItemPreview = ({ data }) => {
     return (
@@ -46,19 +47,19 @@ const Minimap = ({ projects }) => {
     const projectsRef = useRef(null);
     const minimapRef = useRef(null);
 
-    const headerHeightRef = useRef(0);
+    // const headerHeightRef = useRef(0);
 
-    useEffect(() => {
-        const container = containerRef.current;
-        const onePreview = document.querySelectorAll('.item-showcase')[0];
+    // useEffect(() => {
+    //     const container = containerRef.current;
+    //     const onePreview = document.querySelectorAll('.item-showcase')[0];
 
-        if (container && onePreview) {
-            const parentTop = container.getBoundingClientRect().top + window.scrollY;
-            const childTop = onePreview.getBoundingClientRect().top;
-            let res = Math.abs(parentTop - childTop);
-            headerHeightRef.current = res;
-        }
-    }, [projects]);
+    //     if (container && onePreview) {
+    //         const parentTop = container.getBoundingClientRect().top + window.scrollY;
+    //         const childTop = onePreview.getBoundingClientRect().top;
+    //         let res = Math.abs(parentTop - childTop);
+    //         headerHeightRef.current = res;
+    //     }
+    // }, [projects]);
 
     const detectScroll = () => {
         const container = containerRef.current;
@@ -77,15 +78,11 @@ const Minimap = ({ projects }) => {
         const heightProjects = onePreview.offsetHeight * 6 + (5 * 16 * 4);
         const heightMinimapToCompare = oneCard.offsetHeight * 5 + (5 * 16);
 
-        console.log('h', heightMinimap, oneCard.offsetHeight * 5 + (5 * 16));
-
         let currentScroll = window.scrollY;
 
         if (0 > currentPosTop && currentPosBottom >= window.innerHeight) {
             let ratio = heightMinimap / heightProjects;
             let res = -1 * ((currentScroll) * ratio);
-
-            console.log(res, heightMinimap, res < heightMinimap * -1)
 
             preview.style.transform = `translateY(${
                 res + 113 > 0
@@ -113,8 +110,7 @@ const Minimap = ({ projects }) => {
         }
     };
 
-    useEffect(() => {
-
+    useGSAP(() => {
         if (window.innerWidth >= 1024) {
             window.addEventListener("scroll", detectScroll);
             window.addEventListener("resize", detectScroll);
@@ -124,7 +120,7 @@ const Minimap = ({ projects }) => {
                 window.removeEventListener("resize", detectScroll);
             };
         }
-    }, [projects]);
+    }, [containerRef]);
 
     return (
         <div className="minimap-container">
