@@ -112,6 +112,10 @@ const NextProject = ({
         return null;
     }
 
+    const handleProjectView = (e) => {
+        projectView(e, nextId, navigate, false);
+    };
+
     return (
         <div data-nextid={next.id} className="next-project-container">
 
@@ -142,12 +146,13 @@ const NextProject = ({
 
                     </div>
 
-                    <LazyLoadImage
+                    <img
                         ref={imgNextProject}
                         className="banner next-project"
                         data-text-cursor="Next project"
                         src={process.env.PUBLIC_URL + `/assets/pictures/works/${next.banner}.png`}
                         alt={`${next.name} banner`}
+                        onClick={handleProjectView}
                     />
                 </div>
 

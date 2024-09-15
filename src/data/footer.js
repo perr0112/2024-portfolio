@@ -11,7 +11,7 @@ export const networks = [
     },
     {
         href: "https://x.com/codedbyclement",
-        target: "Twitter"
+        target: "Twitter/X"
     },
     {
         href: "mailto:prtclement.ctc@gmail.com",
