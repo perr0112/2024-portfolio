@@ -124,7 +124,8 @@ a {
                 // font-size: clamp(64px, 15vw, 128px);
                 font-size: 25vw;
                 // line-height: 1;
-                color: var(--white);
+                // color: var(--white);
+                color: rgba(255, 255, 255, 0.2);
                 white-space: nowrap;
             }
         }

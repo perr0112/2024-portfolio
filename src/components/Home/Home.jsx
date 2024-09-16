@@ -1,8 +1,10 @@
 import './Home.scss';
 
-import { useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
+
+import { WindowContext } from '../../contexts/Window/index';
 
 import Loader from "./Loader/Loader";
 
@@ -13,37 +15,47 @@ import HomePreview from './HomePreview';
 
 const Home = () => {
 
+    const homeContentRef = useRef(null);
+    const { width } = useContext(WindowContext);
+
     const mouseMove = (e) => {
-        const eyes = document.querySelectorAll('.pupille-wrapper');
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-    
-        eyes.forEach((eye) => {
-            const eyeRect = eye.getBoundingClientRect();
-            const eyeX = eyeRect.left + eyeRect.width / 2;
-            const eyeY = eyeRect.top + eyeRect.height / 2;
-    
-            const deltaX = mouseX - eyeX;
-            const deltaY = mouseY - eyeY;
-    
-            const translateX = deltaX / 50 > 30 ? 30 : deltaX / 50;
-            const translateY = deltaY / 50 > 30 ? 30 : deltaY / 50;
-    
-            gsap.to(eye, {
-                x: translateX,
-                y: translateY,
-                duration: 1.2,
-                ease: 'Expo.easeOut',
+        const homeContentRect = homeContentRef.current.getBoundingClientRect();
+        
+        if (homeContentRect.bottom >= window.innerHeight / 2) {
+            const eyes = document.querySelectorAll('.pupille-wrapper');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+        
+            eyes.forEach((eye) => {
+                const eyeRect = eye.getBoundingClientRect();
+                const eyeX = eyeRect.left + eyeRect.width / 2;
+                const eyeY = eyeRect.top + eyeRect.height / 2;
+        
+                const deltaX = mouseX - eyeX;
+                const deltaY = mouseY - eyeY;
+        
+                const translateX = deltaX / 50 > 30 ? 30 : deltaX / 50;
+                const translateY = deltaY / 50 > 30 ? 30 : deltaY / 50;
+        
+                gsap.to(eye, {
+                    x: translateX,
+                    y: translateY,
+                    duration: 1.2,
+                    ease: 'Expo.easeOut',
+                });
             });
-        });
+        }
+
     };    
 
     useEffect(() => {
-        window.addEventListener('mousemove', mouseMove);
-        window.addEventListener('resize', mouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', mouseMove);
+        if (width > 1024) {
+            window.addEventListener('mousemove', mouseMove);
+            window.addEventListener('resize', mouseMove);
+    
+            return () => {
+                window.removeEventListener('mousemove', mouseMove);
+            }
         }
     });
 
@@ -51,7 +63,7 @@ const Home = () => {
         <div className="home">
             <Loader />
             <div className="home-container">
-                <div className="home__content">
+                <div className="home__content" ref={homeContentRef}>
 
                     <div className="container__title">
                         <h1>Bonjour, hell

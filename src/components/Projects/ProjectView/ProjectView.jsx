@@ -4,17 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import NextProject from './NextProject/NextProject';
-import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
 
-import { getCurrentProject, getNextProject } from "../../../utils/projects";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { WindowContext } from '../../../contexts/Window';
 
-const phrases = [
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laborum a ducimus.',
-    'Fugiat laborum a ducimus voluptatem dolores modi rerum nihil omnis recusandae corporis.',
-    'Nihil assumenda culpa itaque, dolor voluptas, impedit.',
-];
+import { AnimatedImg, ButtonLink, Linemask } from '../../commons';
+import { getCurrentProject, getNextProject } from "../../../utils/projects";
 
 const ProjectView = () => {
     const params = useParams();
@@ -36,7 +30,7 @@ const ProjectView = () => {
     return (
         <>
             <div className="project-view" data-target="false">
-                <LazyLoadImage
+                <img
                     className="banner"
                     data-text-cursor="Scroll down"
                     src={process.env.PUBLIC_URL + `/assets/pictures/works/${currentProject.banner}.png`}
@@ -54,7 +48,8 @@ const ProjectView = () => {
 
                 <div className="content__description">
                     <div className="project__desc">
-                        <Linemask phrases={phrases} className="project-font" />
+                        {/* <Linemask phrases={phrases} className="project-font" /> */}
+                        <Linemask phrases={currentProject.description || ['']} className="project-font" />
                     </div>
 
                     {tags &&
@@ -64,23 +59,26 @@ const ProjectView = () => {
                             ))} */}
                             <Linemask phrases={["Roles"]} className="project-roles" />
                             <Linemask phrases={tags || []} className="project-font-tags" />
-
-                            <ButtonLink
-                                classNames="mbc-m"
-                                href={currentProject.url}
-                            >
-                                View project
-                            </ButtonLink>
+                            
+                            {currentProject.available &&
+                                <ButtonLink
+                                    classNames="mbc-m"
+                                    href={currentProject.url}
+                                >
+                                    View project
+                                </ButtonLink>
+                            }
                         </div>
                     }
                 </div>
 
-                <div className="content__images mbc-xl">
+                <div className="content__images">
                     {Array(currentProject.images).fill().map((index, i) =>
                         // <p>img {i}</p>
                         <AnimatedImg
                         // <img
                             key={index}
+                            background={currentProject.color}
                         // <img
                             src={process.env.PUBLIC_URL + `/assets/pictures/workview/${currentProject.banner}/preview-${i + 1}.png`}
                             alt={`${i+1}'s preview`}

@@ -34,8 +34,8 @@ const ItemShowcase = ({ data }) => {
                 />
             </div>
             <div className="showcase__infos" data-target="false">
-                <p data-after="See project">{data.name}</p>
-                <p data-after={data.date}>{data.date}</p>
+                <p className="animated" data-after="See project">{data.name}</p>
+                <p>{data.date}</p>
             </div>
         </div>
     )

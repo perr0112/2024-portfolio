@@ -3,10 +3,9 @@
     overflow: hidden;
 
     @media screen and (min-width: 1000px) {
-        // padding: min(10vw, 10px);
-        // padding: 20px;
+        padding: 20px;
         // background-color: var(--pretty-light-gray);
-        // border-radius: 20px;
+        border-radius: 10px;
     }
 
     img.clip-path {
@@ -18,7 +17,7 @@
 
         @media screen and (min-width: 1000px) {
             // border-radius: calc(5px +  min(20vw, 25px));
-            // border-radius: 10px;
+            border-radius: 10px;
         }
     }
 }

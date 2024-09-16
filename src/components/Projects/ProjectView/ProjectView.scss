@@ -120,7 +120,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: var(--l-sizing);
+        gap: calc(var(--l-sizing) * 2);
+        margin-block: calc(var(--l-sizing) * 5);
 
         img {
             width: 100%;

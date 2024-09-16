@@ -133,7 +133,7 @@ img {
                     // background-color: green;
                     
                     @media screen and (min-width: 1000px) {
-                        &:hover .showcase__infos p {
+                        &:hover .showcase__infos p.animated {
                             transform: translateY(-100%);
                         }
                     }

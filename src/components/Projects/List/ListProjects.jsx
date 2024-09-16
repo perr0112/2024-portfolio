@@ -36,14 +36,14 @@ const ListProjects = () => {
     }, [selectedTags]);
     
     const [typeShow, setTypeShow] = useState(
-        localStorage.getItem('preference-display') ?
-        localStorage.getItem('preference-display') :
+        // localStorage.getItem('preference-display') ?
+        // localStorage.getItem('preference-display') :
         'Minimap'
     );
 
     const handleTypeShow = useCallback((e) => {
         setTypeShow(e);
-        localStorage.setItem('preference-display', e);
+        // localStorage.setItem('preference-display', e);
     });
 
     return (

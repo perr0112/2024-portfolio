@@ -19,7 +19,7 @@ const AnimatedImg = ({ src, alt, background }) => {
     });
 
     return (
-        <div className="image-animated" ref={ref} data-background={background}>
+        <div className="image-animated" ref={ref} style={{ backgroundColor: background }}>
             <motion.img
                 className="clip-path"
                 src={src}

@@ -48,7 +48,7 @@ export function projectView(
     })
 
     tl.set(imgCurrentProject, {
-        scale: 1.2 / 1.8,
+        scale: 1,
         // scale: 1.2 / 1.6,
         borderRadius: '10px;',
         position: 'fixed',
