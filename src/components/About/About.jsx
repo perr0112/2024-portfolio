@@ -1,68 +1,95 @@
 import './About.scss';
 
 import { Linemask } from '../commons';
-import Star from '../commons/Icons/Star';
+
+import Solidity from '../commons/Icons/Solidity';
+import Ball from '../commons/Icons/Ball';
 
 import experiences from '../../data/experiences';
+import { useEffect } from 'react';
+import { ANIMATION_ABOUT } from '../../animations/About';
+import Star from '../commons/Icons/Star';
 
-const phrases = [
-    "My name is Clement P., and I'm a young up-and-coming creative developer.",
-    "I'm an inquisitive student, a fan of design and, above all, a football fan. I like to bring rigour and solidity to a project as a whole.",
-    "I like to combine <span class='primary-keyword'>creativity</span>, <span class='primary-keyword'>ingenuity</span> and <span class='primary-keyword'>aesthetics</span> in each of my projects, which you can find on this portfolio."
+const phrases_desc = [
+    "My name is Clement P.",
+    "I like to bring rigour and solidity to a",
+    "project as a whole."
 ];
+
+const phrases_hobbies = [
+    "Inquisitive student, fan of design and",
+    "above all, a football fan."
+]
 
 const Experience = ({ data }) => {
     return (
-        <li className="experience">
-            <div className="experience-group">
-                <div className="group__main-infos">
-                    <div className="infos__top">
-                        <p>{data.location}, <a className="link-right-line" target="_blank" href={data.linkCompany}>{data.company}</a></p>
-                    </div>
-                    <div className="infos__bottom">
-                        <p>{data.begin}</p>
-                        <div className="line-date" />
-                        <p>{data.end}</p>
-                    </div>
+        <div className="experience-group">
+            <div className="group__main-infos">
+                <div className="infos__title">
+                    <p><a className="link-right-line" target="_blank" href={data.linkCompany}>{data.company}</a>, {data.location}</p>
                 </div>
-                <div className="group__description">
-                    <div className="description__exp">
-                        {data.description.map((p, i) => <p className="exp-desc" key={i}>{p}</p>)}
-                    </div>
-                    <div className="tags__exp">
-                        {data.tags.map((tag, i) => <span key={i} className="exp-tag">{tag}</span>)}
-                    </div>
+                <div className="infos__date">
+                    <p>{data.begin + '—' + data.end}</p>
                 </div>
             </div>
-        </li>
+            <div className="group__description">
+                <div className="description__exp">
+                    {data.description.map((p, i) => <p className="exp-desc" key={i}>{p}</p>)}
+                </div>
+            </div>
+            <div className="group__tags">
+                {data.tags.map((tag, i) => <span key={i} className="exp-tag">{tag}</span>)}
+            </div>
+        </div>
     );
 }
 
 const About = () => {
 
+    useEffect(() => {
+        ANIMATION_ABOUT();
+    }, []);
+
     return (
         <div className="about-container">
-            <div className="about__description">
-                {/* <div className="about-mask" data-text-cursor="Scroll for more" /> */}
-                <div className="description__icon">
+            <div className="container__infos">
+                <div className="infos__title">
+                    <Linemask phrases={["(About)"]} />
+                </div>
+                <div className="infos__desc">
+                    <div className="desc">
+                        <Linemask phrases={phrases_desc} />
+                        <Solidity />
+                    </div>
+                    <div className="hobbies">
+                        <Linemask phrases={phrases_hobbies} />
+                        <Ball />
+                    </div>
+                </div>
+            </div>
+
+            <div className="container__shape">
+                <div className="shapes__group">
                     <Star />
-                </div>
-                <div className="description__text">
-                    <Linemask phrases={phrases} />
+                    <div className="circle c--1">
+                        Creativity
+                    </div>
+                    <div className="circle c--2">
+                        Design
+                    </div>
+                    <div className="circle c--3">
+                        Development
+                    </div>
                 </div>
             </div>
 
-            <div className="about__experiences">
-                {/* <h1>Experiences</h1> */}
-                <Linemask phrases={["Experiences"]} className="title-page" />
+            <div className="container__experiences">
+                <Linemask phrases={["(Experiences)"]} className="experiences-title" />
 
-                <div className="experiences__list">
-                    <ul>
-                        {experiences.map((experience, i) => <Experience key={i} data={experience} />)}
-                    </ul>
+                <div className="experiences__items">
+                    {experiences.map((exp, i) => <Experience data={exp} index={i} />)}
                 </div>
             </div>
-            
         </div>
     )
 }

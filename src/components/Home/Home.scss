@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
 body .main-content.body-content[data-theme="basic-noscroll"] {
+    overflow: hidden;
 
     .home-container, .preview-container, .footer-container {
         display: none;

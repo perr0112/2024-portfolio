@@ -6,9 +6,10 @@ import LinkTransition from '../Transition/LinkTransition';
 
 import { ANIMATION_PROJECTS } from '../../animations';
 import { ANIMATION_CONTACT } from '../../animations/';
+import { ANIMATION_ABOUT } from '../../animations/About';
 
 const links = [
-    { to: '/about', text: 'About', onComplete: '' },
+    { to: '/about', text: 'About', onComplete: ANIMATION_ABOUT },
     { to: '/projects', text: 'Projects', onComplete: ANIMATION_PROJECTS },
     { to: '/contact', text: 'Contact', onComplete: ANIMATION_CONTACT },
 ]
