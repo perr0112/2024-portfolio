@@ -21,28 +21,29 @@ const phrases_hobbies = [
     "above all, a football fan."
 ]
 
-const Experience = ({ data }) => {
-    return (
-        <div className="experience-group">
-            <div className="group__main-infos">
-                <div className="infos__title">
-                    <p><a className="link-right-line" target="_blank" href={data.linkCompany}>{data.company}</a>, {data.location}</p>
-                </div>
-                <div className="infos__date">
-                    <p>{data.begin + '—' + data.end}</p>
-                </div>
-            </div>
-            <div className="group__description">
-                <div className="description__exp">
-                    {data.description.map((p, i) => <p className="exp-desc" key={i}>{p}</p>)}
-                </div>
-            </div>
-            <div className="group__tags">
-                {data.tags.map((tag, i) => <span key={i} className="exp-tag">{tag}</span>)}
-            </div>
-        </div>
-    );
-}
+// const Experience = ({ data }) => {
+//     return (
+//         <div className="experience-group">
+//             A REMPLACER PAR PROJET RANDOM
+//             <div className="group__main-infos">
+//                 <div className="infos__title">
+//                     <p><a className="link-right-line" target="_blank" href={data.linkCompany}>{data.company}</a>, {data.location}</p>
+//                 </div>
+//                 <div className="infos__date">
+//                     <p>{data.begin + '—' + data.end}</p>
+//                 </div>
+//             </div>
+//             <div className="group__description">
+//                 <div className="description__exp">
+//                     {data.description.map((p, i) => <p className="exp-desc" key={i}>{p}</p>)}
+//                 </div>
+//             </div>
+//             <div className="group__tags">
+//                 {data.tags.map((tag, i) => <span key={i} className="exp-tag">{tag}</span>)}
+//             </div>
+//         </div>
+//     );
+// }
 
 const About = () => {
 
@@ -84,12 +85,16 @@ const About = () => {
             </div>
 
             <div className="container__experiences">
+                <Linemask phrases={["(Random Projects)"]} className="projects-title" />
+            </div>
+
+            {/* <div className="container__experiences">
                 <Linemask phrases={["(Experiences)"]} className="experiences-title" />
 
                 <div className="experiences__items">
                     {experiences.map((exp, i) => <Experience data={exp} index={i} />)}
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
