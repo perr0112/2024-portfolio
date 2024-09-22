@@ -20,7 +20,7 @@ const Footer = () => {
     }, [pathname]);
 
     return (
-        <div className="footer-container" data-background={backgroundFooter}>
+        <div className="footer-container" data-background={backgroundFooter} data-target="false">
             <div className="footer__content">
                 <div className="content__infos">
                     <div className="infos__networks">

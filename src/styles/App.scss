@@ -97,7 +97,7 @@ body.transitioning {
     overflow: hidden;
 }
 
-body.transitioning .main-content > * {
+body.transitioning .main-content > *, body.transitioning .footer-container {
     display: none;
     // opacity: 0;
     // visibility: hidden;

@@ -1,8 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { projectView } from "../../../../utils/projectView";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import gsap from "gsap";
+
+import { projectView } from "../../../../utils/projectView";
 
 const ProjectItem = ({ data }) => {
     const navigate = useNavigate();

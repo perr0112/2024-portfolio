@@ -147,27 +147,29 @@ const HomePreview = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="works__image" onClick={handleProjectView}>
+                    <div className="works__image">
                         {/* <div className="mask" data-text-cursor="View project" /> */}
                         <div className="project">
-                            <img
-                                onClick={handleProjectView}
-                                className="--1"
-                                src={process.env.PUBLIC_URL + `/assets/pictures/works/freshzea.png`}
-                                alt="FreshZea's banner"
-                                data-id="6"
-                                data-text-cursor="Freshzea"
-                                data-target="false"
-                            />
-                            <img
-                                onClick={handleProjectView}
-                                className="--2"
-                                src={process.env.PUBLIC_URL + `/assets/pictures/works/flexin.png`}
-                                alt="Flexin's banner"
-                                data-id="2"
-                                data-text-cursor="Flexin"
-                                data-target="false"
-                            />
+                            <div className="project__img">
+                                <img
+                                    // onClick={handleProjectView}
+                                    className="--1"
+                                    src={process.env.PUBLIC_URL + `/assets/pictures/works/freshzea.png`}
+                                    alt="FreshZea's banner"
+                                    data-id="6"
+                                    data-text-cursor="Freshzea"
+                                />
+                            </div>
+                            <div className="project__img">
+                                <img
+                                    // onClick={handleProjectView}
+                                    className="--2"
+                                    src={process.env.PUBLIC_URL + `/assets/pictures/works/flexin.png`}
+                                    alt="Flexin's banner"
+                                    data-id="2"
+                                    data-text-cursor="Flexin"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

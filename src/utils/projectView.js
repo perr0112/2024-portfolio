@@ -57,6 +57,7 @@ export function projectView(
         width: imgRect.width,
         height: imgRect.height,
         zIndex: 9,
+        maxHeight: '100%'
         // onComplete: () => {
         //     window.scrollTo({ top: 0 })
         // }

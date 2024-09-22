@@ -8,6 +8,7 @@ a {
     display: flex;
     flex-direction: row;
     align-items: end;
+    margin-top: 20vh;
 
     &[data-background="white"] {
         background-color: var(--white);
