@@ -1,17 +1,21 @@
 import './About.scss';
 
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 import { Linemask } from '../commons';
 
 import Solidity from '../commons/Icons/Solidity';
 import Ball from '../commons/Icons/Ball';
+import Star from '../commons/Icons/Star';
 
 import experiences from '../../data/experiences';
-import { useEffect, useRef, useState } from 'react';
+
 import { ANIMATION_ABOUT } from '../../animations/About';
-import Star from '../commons/Icons/Star';
+import { projectView } from "../../utils/projectView";
 import PreviewProject from './PreviewProject/PreviewProject';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 const phrases_desc = [
     "My name is Clement P.",
@@ -41,6 +45,29 @@ const selected_projects = [
         banner: "flexin",
     }
 ];
+
+const Experience = ({ data }) => {
+    return (
+        <div className="experience__content">
+            <div className="content__top">
+                <p>{data.company}</p>
+                <p>{data.begin + '—' + data.end}</p>
+            </div>
+            <div className="content__main">
+                <p>
+                    <span>(JOB)</span>
+                    {data.description}
+                </p>
+            </div>
+            <div className="content__bottom">
+                <p>
+                    <span>(TECHS)</span>
+                    {data.tags.join(', ')}
+                </p>
+            </div>
+        </div>
+    )
+}
 
 const About = () => {
 
@@ -75,7 +102,7 @@ const About = () => {
         const indicators = gsap.utils.toArray('.indicator');
         indicators.forEach((el, index) => {
             tl.current.to(el, {
-                duration: 5,
+                duration: 3,
                 // duration: 1,
                 onUpdate: function() {
                     const progressValue = Math.min(this.progress() * 100, 100);
@@ -99,6 +126,14 @@ const About = () => {
             console.log("L'élément actuel est:", currentIndicator);
         }
     }, [currentIndicator]);
+
+    const navigate = useNavigate();
+
+    const handleProjectView = (e) => {
+        stopAnimation();
+        // const id = e.target.getAttribute('data-id');
+        projectView(e, selected_projects[currentIndicator].id, navigate, false, true);
+    };
 
     return (
         <div className="about-container" ref={container}>
@@ -133,6 +168,13 @@ const About = () => {
                 </div>
             </div>
 
+            <div className="container__experiences">
+                <Linemask phrases={["(Experiences)"]} className="title-page" />
+                <div className="experiences__list">
+                    {experiences.map((exp, i) => <Experience data={exp} index={i} />)}
+                </div>
+            </div>
+
             <div className="container__projects">
                 <Linemask phrases={["(Random projects)"]} data-target="false" className="title-page" />
 
@@ -150,10 +192,17 @@ const About = () => {
                         )} */}
                         <PreviewProject
                             data={selected_projects[currentIndicator]}
-                            stopAnimation={stopAnimation}
                         >
+                            <div className="mask" data-text-cursor="See project" onClick={handleProjectView} />
                             <div data-target="false" className="content__tags">
-
+                                <p className="tags__title">
+                                    <span>
+                                        {selected_projects[currentIndicator].name}
+                                    </span>
+                                    <span>
+                                        {currentIndicator + 1}
+                                    </span>
+                                </p>
                             </div>
                         </PreviewProject>
                     </div>

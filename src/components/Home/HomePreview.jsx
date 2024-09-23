@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef } from 'react';
+import { useCallback, useContext, useEffect, useRef } from 'react';
 import LinkTransition from '../Transition/LinkTransition';
 
 import gsap from 'gsap';
@@ -18,7 +18,7 @@ const HomePreview = () => {
 
     const { setTheme } = useContext(ThemeContext);
 
-    useGSAP(() => {
+    useEffect(() => {
         if (!refProgress || location.pathname !== '/') return;
         const el = document.querySelector('.main-content.body-content');
         ScrollTrigger.create({
@@ -92,7 +92,7 @@ const HomePreview = () => {
          }, {
             scale: 1
          }, 0)
-    });
+    }, []);
 
     const handleProjectView = (e) => {
         const id = e.target.getAttribute('data-id');

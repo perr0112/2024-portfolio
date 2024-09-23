@@ -8,6 +8,7 @@ export function projectView(
     href = '/',
     navigate,
     fromProject,
+    immediate
 ) {
 
     console.log('e============', event, href, navigate, fromProject);
@@ -36,7 +37,7 @@ export function projectView(
             gsap.to(data, {
                 opacity: 0,
                 pointerEvents: 'none',
-                duration: fromProject ? 0 : DURATION_TRANSITION - 0.15,
+                duration: fromProject || immediate ? 0 : DURATION_TRANSITION - 0.15,
                 // duration: DURATION_TRANSITION - 0.15,
                 ease: 'Expo.easeInOut',
             })
