@@ -9,6 +9,8 @@ import LongArrow from "../commons/Icons/Long-arrow";
 
 import { ANIMATION_CONTACT } from '../../animations';
 
+import { validateEmail } from "../../utils/basics";
+
 const Contact = () => {
     const [identity, setIdentity] = useState('');
     const [email, setEmail] = useState('');
@@ -21,19 +23,24 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        console.log(e);
 
         emailjs.sendForm('service_bhp9vq8',
                         'template_7l7r6vz',
-                        { identity, email, requestType },
+                        // { identity, email, requestType },
+                        form.current,
                         '6sH8LhMcq_INIfqaT')
         .then((res) => {
             console.log('then', res.text)
+            form.current.reset();
+            setIdentity('');
+            setEmail('');
+            setRequestType('');
+            setErrors('');
+            setIsSent(true);
         }, (error) => {
             console.log('catch', error.text)
         })
-        form.current.reset();
-        
-        setIsSent(true);
     }
 
     const handleSubmit = (e) => {
@@ -41,24 +48,21 @@ const Contact = () => {
 
         let formErrors = {};
 
-        // Validate that all fields are filled
         if (!identity) formErrors.identity = "Please enter your name.";
-        if (!email) formErrors.email = "Please enter your email.";
+        if (!email || !validateEmail(email)) formErrors.email = "Please enter your email.";
         if (!requestType) formErrors.requestType = "Please select a request type.";
 
-        // Set errors or submit form if valid
         if (Object.keys(formErrors).length === 0) {
-            // Here you can handle the submission (e.g., sending data to your backend)
-            // alert("Form submitted successfully!");
             console.log(identity, email, requestType);
+            sendEmail(e);
         } else {
             setErrors(formErrors);
         }
     };
 
     const handleTypeClick = useCallback((type) => {
-        setRequestType(type);  // Sets the clicked type as selected
-        setErrors({ ...errors, requestType: '' });  // Reset request type error
+        setRequestType(type);
+        setErrors({ ...errors, requestType: '' });
     });
 
     useEffect(() => {
@@ -113,6 +117,11 @@ const Contact = () => {
                                         Other
                                     </div>
                                 </div>
+                                <input 
+                                    type="hidden" 
+                                    name="requestType" 
+                                    value={requestType} 
+                                />
                                 {errors.requestType && <span className="error">{errors.requestType}</span>}
                             </div>
 
@@ -128,6 +137,11 @@ const Contact = () => {
                                 />
                                 {errors.email && <span className="error">{errors.email}</span>}
                             </div>
+                            {isSent &&
+                                <p className="small-title rep-message animation">
+                                    Your message has been sent successfully!
+                                </p>
+                            }
                         </div>
                     </div>
                     
