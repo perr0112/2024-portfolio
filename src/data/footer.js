@@ -1,4 +1,5 @@
-import { ANIMATION_PROJECTS } from "../animations";
+import { ANIMATION_CONTACT, ANIMATION_PROJECTS } from "../animations";
+import { ANIMATION_ABOUT } from "../animations/About";
 
 export const networks = [
     {
@@ -24,7 +25,7 @@ export const links_portfolio = [
         href: "/about",
         target: "About",
         color: "#8DC7C7",
-        callback: ""
+        callback: ANIMATION_ABOUT,
     },
     {
         href: "/projects",
@@ -36,6 +37,6 @@ export const links_portfolio = [
         href: "/contact",
         target: "Contact",
         color: "#FFFFFF",
-        callback: ""
+        callback: ANIMATION_CONTACT,
     },
 ];

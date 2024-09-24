@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ThemeContext } from '../../contexts/Theme';
 import { ANIMATION_PROJECTS } from '../../animations';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,7 @@ const HomePreview = () => {
 
     const { setTheme } = useContext(ThemeContext);
 
-    useEffect(() => {
+    useGSAP(() => {
         if (!refProgress || location.pathname !== '/') return;
         const el = document.querySelector('.main-content.body-content');
         ScrollTrigger.create({
@@ -76,7 +77,7 @@ const HomePreview = () => {
                     }
                 },
             }
-        }, { scope: refProgress.current });
+        });
     
         tl.fromTo('.--2',{
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -92,7 +93,7 @@ const HomePreview = () => {
          }, {
             scale: 1
          }, 0)
-    }, []);
+    });
 
     const handleProjectView = (e) => {
         const id = e.target.getAttribute('data-id');

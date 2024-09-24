@@ -66,7 +66,7 @@ function App() {
         setInProjectView(false);
         break;
     }
-  }, [location.pathname]);  
+  }, [location.pathname]);
 
   return (
     <>
