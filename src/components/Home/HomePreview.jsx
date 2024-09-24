@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectView } from '../../utils/projectView';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useGSAP } from '@gsap/react';
+
 import { ThemeContext } from '../../contexts/Theme';
 import { ANIMATION_PROJECTS } from '../../animations';
 

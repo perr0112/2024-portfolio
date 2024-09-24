@@ -50,8 +50,8 @@ const Experience = ({ data }) => {
     return (
         <div className="experience__content">
             <div className="content__top">
-                <p>{data.company}</p>
-                <p>{data.begin + '—' + data.end}</p>
+                <a className="link-right-line" href={data.linkCompany}>{data.company}</a>
+                <p>{data.begin + ' — ' + data.end}</p>
             </div>
             <div className="content__main">
                 <p>

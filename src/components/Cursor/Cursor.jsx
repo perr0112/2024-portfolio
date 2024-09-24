@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import lerp from "../../utils/basics";
+import { lerp } from "../../utils/basics";
 
 const Cursor = () => {
     const circle = useRef(null);
