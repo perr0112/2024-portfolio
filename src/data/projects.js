@@ -103,11 +103,12 @@ const projects = [
         date: 2025,
         banner: "occitane",
         tags: ["Development", "UI, UX", "Design", "GSAP", "React", "ThreeJS"],
-        images: 4,
+        images: 5,
         available: true,
         url: "https://occitane-en-provence.vercel.app/",
         description: [
-
+            "Curious by nature, I love discovering new web languages and frameworks. That's why I signed up for Mr Bruno Simon's ThreeJS Journey course.",
+            "To put my skills into practice, I decided to create a project with several 360 views, featuring a visit to a small nursery with clickable points."
         ],
         color: "#00673F75"
     },
