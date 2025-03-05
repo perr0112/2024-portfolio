@@ -82,18 +82,32 @@ const projects = [
         ],
         color: "#FFB6B675"
     },
+    // {
+    //     id: 6,
+    //     name: "FreshZea",
+    //     date: 2024,
+    //     banner: "freshzea",
+    //     tags: ["Development", "UI, UX", "Design", "GSAP", "React"],
+    //     images: 5,
+    //     available: true,
+    //     url: "https://freshzea.vercel.app/",
+    //     description: [
+    //         "Still with the idea of making progress on the UI, UX and interactive development aspects, I chose to design the website of a fictitious pizzeria.",
+    //         "I continued to use GSAP to create interactive scroll animations."
+    //     ],
+    //     color: "#00673F75"
+    // },
     {
         id: 6,
-        name: "FreshZea",
-        date: 2024,
-        banner: "freshzea",
-        tags: ["Development", "UI, UX", "Design", "GSAP", "React"],
-        images: 5,
+        name: "L'Occitane en Provence",
+        date: 2025,
+        banner: "occitane",
+        tags: ["Development", "UI, UX", "Design", "GSAP", "React", "ThreeJS"],
+        images: 4,
         available: true,
-        url: "https://freshzea.vercel.app/",
+        url: "https://occitane-en-provence.vercel.app/",
         description: [
-            "Still with the idea of making progress on the UI, UX and interactive development aspects, I chose to design the website of a fictitious pizzeria.",
-            "I continued to use GSAP to create interactive scroll animations."
+
         ],
         color: "#00673F75"
     },
