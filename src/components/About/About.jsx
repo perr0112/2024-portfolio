@@ -31,8 +31,8 @@ const phrases_hobbies = [
 const selected_projects = [
     {
         id: 6,
-        name: "FreshZea",
-        banner: "freshzea",
+        name: "L'Occitane en Provence",
+        banner: "occitane",
     },
     {
         id: 5,
